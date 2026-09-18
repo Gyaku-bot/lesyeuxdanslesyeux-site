@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les yeux dans les yeux · À vous de jouer · Prototype</title>
+<meta name="description" content="Un party game où toutes les dingueries de la politique française sont vraies, jugées ou déclarées publiquement, et sourcées carte par carte. Jouez une Casserole en 30 secondes.">
+<meta property="og:title" content="Les yeux dans les yeux · À vous de jouer">
+<meta property="og:description" content="Toutes les casseroles de ce jeu sont vraies et sourcées. Sauf celles qui sont fausses. C'est tout le problème.">
+<meta property="og:image" content="https://lesyeuxdanslesyeux.info/cartes/cass_micro_cannes.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tete">
+  <span>Prototype V2.1 · Édition 2026</span>
+  <span class="meta">Party game · Politique française documentée</span>
+</div>
+<div class="titre-row">
+  <h1>Les yeux<br>dans les yeux</h1>
+  <div class="tampon"><span>Prototype</span></div>
+</div>
+<div class="strip"><div>3 à 8 joueurs</div><div>20 à 30 minutes</div><div>Dès 16 ans</div><div>Appris en 2 minutes</div></div>
+
+<section class="jeu" id="jeu">
+  <div class="jeu-tete">
+    <span class="kick">Toutes les casseroles sont vraies et sourcées. Sauf celles qui sont fausses.</span>
+    <h2>À vous de jouer.</h2>
+    <p>Lisez la Casserole. Info ou Intox ? Les yeux dans les yeux.</p>
+  </div>
+
+  <div class="scene" id="scene" aria-live="polite">
+    <div class="carte-wrap">
+      <div class="carte" id="carte">
+        <div class="face recto">
+          <div class="c-kick"><span>Casserole</span><span id="cote">Cote</span></div>
+          <div class="c-titre" id="manchette">Manchette</div>
+          <div class="c-filet"></div>
+          <p class="c-fait" id="fait">Fait</p>
+          <div class="c-question">Info ou intox ?</div>
+          <div class="votes">
+            <button class="vote ok" id="vote-info" type="button" aria-label="Voter Info">Info</button>
+            <button class="vote ko" id="vote-intox" type="button" aria-label="Voter Intox">Intox</button>
+          </div>
+          <div class="c-pied"><span id="page">Registre des scellés</span><svg viewBox="0 0 120 70" fill="none" stroke="#0E1B33" stroke-width="7" aria-hidden="true"><path d="M8 38 Q60 -6 112 38 Q60 80 8 38 Z"/><circle cx="60" cy="38" r="12" fill="#0E1B33" stroke="none"/></svg></div>
+        </div>
+        <div class="face verso" aria-hidden="true">
+          <div class="c-kick"><span>Casserole</span><span id="cote-verso">Cote</span></div>
+          <div class="c-titre" id="manchette-verso">Manchette</div>
+          <div class="c-filet"></div>
+          <p class="c-fait" id="fait-verso">Fait</p>
+          <div class="tampon-verdict ok" id="tampon">Info</div>
+          <p class="c-revelation" id="revelation">Révélation</p>
+          <p class="c-chute" id="chute">Chute</p>
+          <div class="c-pied"><span id="page-verso">Registre des scellés</span><svg viewBox="0 0 120 70" fill="none" stroke="#0E1B33" stroke-width="7" aria-hidden="true"><path d="M8 38 Q60 -6 112 38 Q60 80 8 38 Z"/><circle cx="60" cy="38" r="12" fill="#0E1B33" stroke="none"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pupitre">
+      <div class="numero" id="numero">Casserole 1 / 10</div>
+      <p class="consigne">Le Porte-parole vient de lire. La table a trois secondes. <b>Trois, deux, un, les yeux dans les yeux.</b></p>
+      <div class="resultat" id="resultat" hidden></div>
+      <div class="suite" id="suite" hidden>
+        <button class="btn-suite" id="suivante" type="button">Casserole suivante</button>
+      </div>
+      <div class="score">
+        <div class="lab"><span>Votre score</span><span>Bonnes réponses</span></div>
+        <div class="val" id="score">0 / 0</div>
+        <div class="jauge-wrap" aria-hidden="true"><div class="jauge" id="jauge"></div></div>
+        <div class="jauge-legende"><span>0 %</span><span id="jauge-label">0 %</span><span class="cible">50 % : grand oral</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pitch">
+  <span class="kick">Le pitch</span>
+  <p><b>LES YEUX DANS LES YEUX.</b> Un party game où toutes les dingueries de la politique française sont vraies, jugées ou déclarées publiquement, et sourcées carte par carte.</p>
+  <p>À chaque tour, le Porte-parole lit une <b>Casserole</b>. La table vote <span class="pill ok">Info</span> ou <span class="pill ko">Intox</span>, les yeux dans les yeux. Les <b>Magouilles</b> (49.3, Kompromat, Grâce présidentielle) font le reste. Le premier à 50 % passe son grand oral et se fait élire.</p>
+  <p class="iti">L'INA rencontre Blanc Manger Coco : le premier jeu d'archives, pas un énième jeu de satire.</p>
+</div>
+
+<section>
+  <div class="art"><span class="no">Comment on joue</span><h2>Un tour en quatre temps</h2></div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="d"><b>Le Porte-parole lit la Casserole</b> à voix haute. Un fait politique français, authentique ou déformé. Il change à chaque carte.</div></div>
+    <div class="step"><div class="n">2</div><div class="d"><b>« Trois, deux, un, les yeux dans les yeux. »</b> Chacun pose son bulletin <span class="pill ok">Info</span> ou <span class="pill ko">Intox</span> face cachée, puis on retourne.</div></div>
+    <div class="step"><div class="n">3</div><div class="d"><b>Verdict et chute.</b> Bonne réponse : <b class="r">+10 %</b> sur le plateau. Mauvaise réponse : tu pioches une Magouille. Ta vengeance commence.</div></div>
+    <div class="step"><div class="n">4</div><div class="d"><b>Phase Magouilles.</b> Attaques à ton tour de parole, parades en réaction. À <b class="r">50 %</b>, le favori noue la cravate et passe son <b>grand oral</b> : trois casseroles, deux bonnes réponses, élu.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="art"><span class="no">Les cartes</span><h2>Quelques pièces du dossier</h2></div>
+  <div class="cartes">
+    <figure><img class="carte-img" src="../cartes/cass_micro_cannes.png" alt="Casserole G20 de Cannes 2011, verdict Info"><div class="legende">Casserole · Info</div></figure>
+    <figure><img class="carte-img" src="../cartes/cass_dromadaire.png" alt="Casserole Tombouctou 2013, verdict Intox"><div class="legende">Casserole · Intox</div></figure>
+    <figure><img class="carte-img" src="../cartes/cass_coiffeur.png" alt="Casserole L'Élysée 2016, verdict Intox"><div class="legende">Casserole · Intox</div></figure>
+    <figure><img class="carte-img" src="../cartes/cass_ecotaxe.png" alt="Casserole L'écotaxe 2014, verdict Info"><div class="legende">Casserole · Info</div></figure>
+    <figure><img class="carte-img" src="../cartes/mag_493.png" alt="Magouille 49.3"><div class="legende">Magouille · Attaque</div></figure>
+    <figure><img class="carte-img" src="../cartes/es_penurie.png" alt="Édition spéciale La pénurie de carburant"><div class="legende">Édition spéciale</div></figure>
+  </div>
+</section>
+
+<section>
+  <div class="art"><span class="no">Pourquoi</span><h2>Trois raisons d'y croire</h2></div>
+  <div class="compo"><div class="t">Tout est vrai, et ça se prouve <span class="s">Le premier jeu d'archives</span></div><div class="d">Que du jugé et du déclaré public, chaque carte cotée au Registre des scellés. Le cadre juridique est bordé : c'est l'ADN du jeu, pas un risque. Le comique vient du réel, et le réel bat la fiction à chaque carte.</div></div>
+  <div class="compo"><div class="t">Tous les bords, toute la Ve <span class="s">Constat, pas verdict</span></div><div class="d">La carte dit le fait, jamais ce qu'il faut en penser. Même sévérité de 1958 à 2026. Personne à table n'est neutre : c'est le seul sujet qui met tout le monde d'accord pour se disputer.</div></div>
+  <div class="compo"><div class="t">Un gisement renouvelable <span class="s">Extensions naturelles</span></div><div class="d">Le personnel politique tourne, le corpus aussi : socle intemporel + millésimes (« le millésime 2027 »). Plus de 2 700 faits identifiés pour 200 cartes en boîte. Un jeu à extensions, pas un one-shot.</div></div>
+  <div class="materiel">
+    <div class="t">Le matériel du prototype</div>
+    <div class="d"><b>100 Casseroles</b> (50 Info · 50 Intox, 200 visées en boîte) · <b>50 Magouilles</b> en 12 types (Attaques et Parades) · <b>25 Éditions spéciales</b> · bulletins Info / Intox · plateau de 0 à 50 % · la cravate du favori · règle en 1 page + règle complète 4 p. · <b>Registre des scellés</b>, 33 p. : la source de chaque carte, citée au dos.</div>
+  </div>
+</section>
+
+<section>
+  <div class="art"><span class="no">Documents</span><h2>À télécharger</h2></div>
+  <div class="docs">
+    <a class="doc" href="../SELL_SHEET_A4.pdf"><span class="t">Sell sheet</span><span class="s">PDF · A4 · 1 page · pitch, règle en 4 temps, cartes</span></a>
+    <a class="doc" href="../FICHE_A5.pdf"><span class="t">Fiche éditeur</span><span class="s">PDF · A5 recto/verso · la fiche des Nuits du Off</span></a>
+  </div>
+  <div class="etat">
+    <p><span class="lab">État</span> Prototype V2.1 complet et joué (premier playtest septembre 2026). Règle complète, registre des sources et jeu de cartes disponibles sur demande, en PDF ou en boîte.</p>
+    <p><span class="lab">Titre</span> « Les yeux dans les yeux » est un titre de travail. Dépôt e-Soleau INPI du 3 septembre 2026.</p>
+    <p><span class="lab">Cannes 2027</span> Le prototype sera aux Nuits du Off du Festival International des Jeux, du 23 au 27 février 2027.</p>
+  </div>
+</section>
+
+<div class="noirbox">
+  <div><div class="t">Contact · Auteur</div><div class="d"><b>Quentin Grimal</b><br><a href="mailto:q.grimal@gmail.com">q.grimal@gmail.com</a></div></div>
+  <div class="r">Éditeurs, testeurs, curieux :<br>une partie se joue en trente minutes, un verre dans la main.</div>
+</div>
+
+<div class="baseline"><span>Les yeux dans les yeux · Prototype V2.1 · 2026</span><span>Toute ressemblance avec des faits réels est volontaire, et cotée au Registre des scellés</span></div>
+
+<script src="script.js"></script>
+</body>
+</html>

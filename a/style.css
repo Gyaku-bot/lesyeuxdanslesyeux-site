@@ -1,0 +1,158 @@
+/* DIRECTION A · « L'antenne, 20 h » (maquette du 18/09/2026)
+   Le site est l'antenne d'une soirée électorale : bleu nuit des dos de cartes, titre géant, accroche seule,
+   vraies cartes en éventail. Le papier (fiche d'instruction) ne revient que pour « comment on joue ».
+   Palette : encre #0E1B33 · rouge #A8332B · vert #1B7A43 · crème #F2EDE2 · papier #FBFAF6 · gris #5A6373. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Archivo+Black&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --encre:#0E1B33; --nuit2:#1B3159; --nuit0:#081222;
+  --rouge:#A8332B; --vert:#1B7A43; --creme:#F2EDE2; --papier:#FBFAF6; --gris:#5A6373;
+  --creme-70:rgba(242,237,226,.7); --creme-40:rgba(242,237,226,.4); --creme-18:rgba(242,237,226,.18);
+  --pad:clamp(20px, 5vw, 64px);
+}
+html { scroll-behavior:smooth; background:var(--nuit0); }
+body { font-family:'IBM Plex Sans Condensed', sans-serif; color:var(--creme); background:var(--encre); font-size:17px; line-height:1.4; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+b { font-weight:700; }
+a { color:inherit; }
+.iti { font-style:italic; }
+.mono { font-family:'IBM Plex Mono', monospace; }
+.wrap { max-width:1120px; margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
+
+/* ─── kicker mono ─── */
+.kick { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; display:block; }
+.kick.rouge { color:var(--rouge); }
+.kick.creme { color:var(--creme-70); }
+
+/* ═══ ANTENNE : le hero ═══ */
+.antenne { position:relative; min-height:min(100svh, 880px); background:radial-gradient(ellipse 120% 70% at 50% 40%, var(--nuit2) 0%, var(--encre) 55%, var(--nuit0) 100%); display:flex; flex-direction:column; }
+.antenne .bandeau { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:22px; padding-bottom:18px; border-bottom:1px solid var(--creme-18); }
+.antenne .bandeau .kick { color:var(--creme-70); }
+.antenne .bandeau .live { display:flex; align-items:center; gap:8px; }
+.antenne .bandeau .live::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--rouge); box-shadow:0 0 0 3px rgba(168,51,43,.25); animation:pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { box-shadow:0 0 0 3px rgba(168,51,43,.25);} 50% { box-shadow:0 0 0 7px rgba(168,51,43,0);} }
+
+.antenne .scene { flex:1; display:flex; flex-direction:column; justify-content:center; padding-top:clamp(40px, 8vh, 96px); padding-bottom:clamp(36px, 7vh, 80px); }
+.oeil { width:clamp(54px, 7vw, 84px); height:auto; color:var(--creme); margin-bottom:clamp(18px, 3vh, 30px); }
+.titre-row { display:flex; flex-wrap:wrap; align-items:flex-end; gap:18px 40px; }
+h1 { font-weight:700; font-size:clamp(56px, 12.5vw, 152px); line-height:.9; letter-spacing:-.5px; text-transform:uppercase; color:var(--creme); }
+.filet { width:clamp(70px, 10vw, 140px); height:4px; background:var(--rouge); margin:clamp(20px, 3vh, 32px) 0 clamp(20px, 3vh, 34px); }
+.tampon { display:inline-block; border:3px solid var(--rouge); border-radius:5px; padding:9px 18px 7px; transform:rotate(-4deg); align-self:flex-end; margin-bottom:clamp(6px, 1vw, 18px); }
+.tampon span { font-family:'Archivo Black',sans-serif; font-size:clamp(15px, 2.2vw, 26px); letter-spacing:3.5px; line-height:1; display:block; text-transform:uppercase; color:var(--rouge); white-space:nowrap; }
+.accroche { font-size:clamp(24px, 3.6vw, 44px); font-weight:500; line-height:1.18; max-width:19em; color:var(--creme); }
+.accroche u { text-decoration-color:var(--rouge); text-decoration-thickness:4px; text-underline-offset:7px; font-weight:700; }
+.accroche .pb { color:var(--creme-70); }
+
+.antenne > .wrap { width:100%; }
+.antenne .strip { display:flex; flex-wrap:wrap; border-top:1px solid var(--creme-40); border-bottom:1px solid var(--creme-18); }
+.antenne .strip div { flex:1 1 150px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.6px; text-transform:uppercase; padding:14px 6px 13px; text-align:center; color:var(--creme); border-left:1px solid var(--creme-18); }
+.antenne .strip div:first-child { border-left:0; }
+
+/* ═══ ÉVENTAIL ═══ */
+.eventail { background:linear-gradient(180deg, var(--nuit0) 0%, var(--encre) 30%, var(--encre) 100%); padding-top:clamp(48px, 8vh, 96px); padding-bottom:clamp(56px, 9vh, 110px); overflow:hidden; }
+.eventail .tete { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:10px 24px; margin-bottom:clamp(30px, 5vh, 56px); border-bottom:1px solid var(--creme-18); padding-bottom:14px; }
+.eventail .tete .kick { color:var(--creme); font-size:12px; letter-spacing:2.6px; }
+.eventail .tete .kick::before { content:"· "; color:var(--rouge); }
+.eventail h2 { text-wrap:balance; font-weight:700; font-size:clamp(26px, 4vw, 44px); line-height:1; text-transform:uppercase; letter-spacing:-.2px; color:var(--creme); margin-bottom:clamp(30px, 5vh, 56px); max-width:14em; }
+.eventail h2 .g { color:var(--creme-70); font-weight:500; }
+.fan { display:flex; justify-content:center; align-items:flex-end; gap:0; position:relative; padding:20px 0 10px; }
+.fan figure { flex:0 0 auto; width:clamp(120px, 15vw, 190px); margin:0 clamp(-22px, -1.6vw, -10px); position:relative; transition:transform .9s cubic-bezier(.2,.7,.2,1), opacity .9s ease; will-change:transform; }
+.fan img { display:block; width:100%; border-radius:8px; box-shadow:0 22px 50px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.06) inset; }
+.fan figcaption { display:none; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1.4px; text-transform:uppercase; color:var(--creme-70); text-align:center; margin-top:12px; }
+/* état FINAL visible sans JS : l'éventail déployé */
+.fan figure:nth-child(1) { transform:rotate(-14deg) translateY(30px); z-index:1; }
+.fan figure:nth-child(2) { transform:rotate(-8deg) translateY(12px); z-index:2; }
+.fan figure:nth-child(3) { transform:rotate(-2.5deg); z-index:3; }
+.fan figure:nth-child(4) { transform:rotate(2.5deg); z-index:4; }
+.fan figure:nth-child(5) { transform:rotate(8deg) translateY(12px); z-index:5; }
+.fan figure:nth-child(6) { transform:rotate(14deg) translateY(30px); z-index:6; }
+/* état initial quand JS est là : les cartes sont empilées face à nous, elles se déploient à l'entrée dans l'écran */
+.js .fan:not(.on) figure { transform:translateY(60px) rotate(0deg); opacity:0; }
+.js .fan.on figure { opacity:1; }
+.fan figure:hover { transform:rotate(0deg) translateY(-24px) scale(1.06) !important; z-index:20 !important; transition-duration:.35s; }
+.eventail .legende { text-align:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--creme-70); margin-top:clamp(28px, 4vh, 44px); }
+.eventail .legende b { color:var(--creme); font-weight:600; }
+
+/* ═══ PAPIER : le dossier ═══ */
+.papier { background:var(--papier); color:var(--encre); padding-top:clamp(48px, 8vh, 96px); padding-bottom:clamp(56px, 9vh, 110px); }
+.papier .tete { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500; letter-spacing:1.6px; text-transform:uppercase; border-bottom:1px solid var(--encre); padding-bottom:8px; margin-bottom:clamp(30px, 5vh, 52px); }
+.papier .tete .meta { color:var(--gris); }
+.pitch { font-size:clamp(20px, 2.6vw, 27px); line-height:1.38; max-width:34em; border-bottom:1px solid var(--encre); padding-bottom:clamp(26px, 4vh, 44px); margin-bottom:clamp(36px, 6vh, 64px); }
+.pitch p + p { margin-top:12px; }
+.pitch .kick { margin-bottom:12px; }
+.pill { display:inline-block; font-family:'Archivo Black',sans-serif; font-size:.5em; letter-spacing:1.4px; padding:3px 8px 2px; text-transform:uppercase; border:2px solid currentColor; border-radius:3px; vertical-align:3px; }
+.pill.ok { color:var(--vert); } .pill.ko { color:var(--rouge); }
+
+.papier section { margin-bottom:clamp(40px, 6vh, 72px); }
+.papier section:last-child { margin-bottom:0; }
+.art { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.art .no { background:var(--rouge); color:var(--creme); font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:1.6px; padding:6px 10px 5px; text-transform:uppercase; white-space:nowrap; }
+.art h2 { font-weight:700; font-size:clamp(22px, 3.2vw, 32px); letter-spacing:.2px; text-transform:uppercase; line-height:1; }
+
+.steps { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.step { border:1.5px solid var(--encre); padding:16px 18px; display:flex; gap:14px; background:var(--papier); }
+.step .n { font-weight:700; font-size:36px; line-height:1; color:var(--rouge); }
+.step .d { font-size:17px; line-height:1.4; }
+.step .d b.r { color:var(--rouge); }
+
+.raisons { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+.compo { border:1.5px solid var(--encre); padding:16px 18px; }
+.compo .t { font-weight:700; text-transform:uppercase; letter-spacing:.4px; font-size:18px; line-height:1.1; }
+.compo .t .s { display:block; font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:11px; letter-spacing:1.2px; color:var(--gris); text-transform:uppercase; margin-top:6px; }
+.compo .d { font-size:16px; line-height:1.42; margin-top:10px; }
+
+.materiel { border-top:3px solid var(--encre); padding-top:14px; }
+.materiel .t { font-weight:700; text-transform:uppercase; font-size:18px; letter-spacing:.4px; margin-bottom:8px; }
+.materiel .d { font-size:17px; line-height:1.42; max-width:52em; }
+
+.docs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.doc { border:1.5px solid var(--encre); padding:18px 20px; text-decoration:none; display:block; transition:background .2s; }
+.doc:hover { background:#F2EDE2; }
+.doc .t { font-weight:700; text-transform:uppercase; font-size:18px; display:block; }
+.doc .s { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gris); display:block; margin-top:6px; }
+
+/* ═══ RETOUR À L'ANTENNE : Cannes + contact ═══ */
+.fin { background:radial-gradient(ellipse 120% 80% at 50% 100%, var(--nuit2) 0%, var(--encre) 55%, var(--nuit0) 100%); color:var(--creme); padding-top:clamp(56px, 9vh, 110px); padding-bottom:36px; }
+.fin .grille { display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(28px, 5vw, 72px); align-items:start; margin-bottom:clamp(44px, 7vh, 84px); }
+.fin h2 { font-weight:700; font-size:clamp(34px, 6vw, 72px); line-height:.98; text-transform:uppercase; letter-spacing:-.4px; margin:14px 0 20px; }
+.fin h2 .g { color:var(--creme-70); font-weight:500; }
+.fin .d { font-size:clamp(17px, 1.6vw, 20px); line-height:1.42; color:var(--creme-70); max-width:30em; }
+.fin .d b { color:var(--creme); }
+.contact { border-top:3px solid var(--rouge); padding-top:18px; }
+.contact .nom { font-weight:700; font-size:clamp(22px, 2.6vw, 30px); text-transform:uppercase; line-height:1.05; margin:10px 0 8px; }
+.contact a { font-size:clamp(17px, 1.6vw, 20px); text-decoration-color:var(--creme-40); text-underline-offset:4px; }
+.contact .r { font-size:15px; line-height:1.42; color:var(--creme-70); margin-top:16px; max-width:26em; }
+.fin .baseline { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; border-top:1px solid var(--creme-18); padding-top:14px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--creme-70); }
+
+/* ─── reveal au scroll (état final sans JS = visible) ─── */
+.js .reveal { opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.on { opacity:1; transform:none; }
+
+/* ═══ responsive ═══ */
+@media (max-width:900px) {
+  .raisons { grid-template-columns:1fr; }
+  .fin .grille { grid-template-columns:1fr; }
+  .fan figure { width:clamp(96px, 22vw, 150px); margin:0 -10px; }
+}
+@media (max-width:620px) {
+  body { font-size:16px; }
+  .antenne .bandeau .meta { display:none; }
+  h1 { font-size:clamp(52px, 17vw, 84px); }
+  .titre-row { gap:12px 24px; }
+  .tampon { align-self:flex-start; }
+  .accroche { font-size:clamp(22px, 6.4vw, 30px); }
+  .antenne .strip div { flex:1 1 46%; }
+  .steps, .docs { grid-template-columns:1fr; }
+  .fan { flex-wrap:wrap; gap:14px 0; padding:0; justify-content:center; }
+  .fan figure { width:31%; margin:0 1%; }
+  .fan figure:nth-child(n) { transform:rotate(0) translateY(0); }
+  .fan figure:nth-child(odd) { transform:rotate(-3deg); }
+  .fan figure:nth-child(even) { transform:rotate(3deg); }
+  .fan figure:nth-child(3), .fan figure:nth-child(4) { transform:rotate(0); }
+  .fan figcaption { display:block; font-size:9px; letter-spacing:1px; }
+  .step .n { font-size:30px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .js .reveal, .js .fan figure { transition:none; opacity:1; }
+  .antenne .bandeau .live::before { animation:none; }
+}
