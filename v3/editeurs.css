@@ -50,7 +50,7 @@ b{font-weight:700;} a{color:inherit;} img{display:block;max-width:100%;}
 .doc:hover{background:var(--encre);color:var(--creme);}
 .doc .t{font-weight:700;text-transform:uppercase;letter-spacing:.02em;}
 .doc .s{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75;}
-.demande{margin-top:1.2em;padding:1.3em 1.5em;background:var(--navy);color:var(--creme);border-radius:.35em;display:grid;grid-template-columns:1fr auto;gap:1.2em;align-items:center;}
+.demande{margin-top:1.6em;padding:1.3em 1.5em;background:var(--navy);color:var(--creme);border-radius:.35em;display:grid;grid-template-columns:1fr auto;gap:1.2em;align-items:center;}
 .demande .k{color:#e8776d;display:block;margin-bottom:.35em;}
 .demande p{font-size:.95rem;}
 .btn{display:inline-flex;align-items:center;padding:1em 1.4em .9em;background:var(--rouge);color:#fff;border-radius:.3em;text-decoration:none;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .2s,transform .2s;}
