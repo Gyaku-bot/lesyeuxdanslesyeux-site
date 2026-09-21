@@ -7,7 +7,7 @@
 <meta name="description" content="Un party game où toutes les dingueries de la politique française sont vraies, jugées ou déclarées publiquement, et sourcées carte par carte. Cinq Casseroles à trancher : info ou intox ?">
 <meta property="og:title" content="Les yeux dans les yeux">
 <meta property="og:description" content="Tout est vrai. Sauf ce qui est faux. C'est bien tout le problème. Cinq Casseroles à trancher.">
-<meta property="og:image" content="https://lesyeuxdanslesyeux.info/v2/assets/og.png">
+<meta property="og:image" content="https://lesyeuxdanslesyeux.info/v3/assets/og_boite.png">
 <meta property="og:url" content="https://lesyeuxdanslesyeux.info/">
 <meta name="theme-color" content="#0E1B33">
 <script>
@@ -20,6 +20,22 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="arrivee">
+
+<!-- ÉCRAN 0 · LA BOÎTE -->
+<section class="hero" id="haut">
+  <img class="hero-img" src="assets/boite_mockup.webp" alt="La boîte du prototype Les yeux dans les yeux, avec des cartes Casserole et Magouille face cachée">
+  <div class="hero-voile" aria-hidden="true"></div>
+  <div class="hero-txt in" style="--d:120ms">
+    <p class="kick">Un fait politique français · Prototype 2026</p>
+    <h1>Info ou intox ?</h1>
+    <p class="lede">Le Porte-parole lit. Vous tranchez, les yeux dans les yeux. Cinq Casseroles pour voir ce que ça fait.</p>
+    <div class="actions">
+      <a class="btn plein grand" href="#table">Testez</a>
+      <a class="lien kick" href="#editeurs">Vous éditez des jeux ?</a>
+    </div>
+  </div>
+  <a class="cue kick hero-cue in" style="--d:600ms" href="#table" aria-label="Descendre vers la table"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9l8 8 8-8"/></svg></a>
+</section>
 
 <!-- ÉCRAN 1 · LA TABLE -->
 <section class="table" id="table">
