@@ -70,6 +70,13 @@ function carteHTML(c, n){
   </article>`;
 }
 
+/* ---- une carte trop pleine se resserre, comme à l'impression ---- */
+function ajuster(carte){
+  const deborde = () => carte.scrollHeight > carte.clientHeight + 1;
+  if (deborde()) carte.classList.add('serre');
+  if (deborde()) carte.classList.add('serre2');
+}
+
 /* ---- distribuer : la carte du dessus se retourne ---- */
 function distribuer(){
   etat.i++;
@@ -83,6 +90,7 @@ function distribuer(){
   slot.classList.remove('face', 'sort');
   slot.innerHTML = `<div class="flip"><div class="back"></div><div class="front">${carteHTML(c, n)}</div></div>`;
   etat.carte = slot.querySelector('.carte');
+  ajuster(etat.carte);
   /* le paquet maigrit : il reste (5 - n) cartes dessous */
   const reste = CARTES.length - n;
   $('dos1').classList.toggle('parti', reste < 1);
@@ -191,11 +199,13 @@ document.addEventListener('keydown', e => {
 });
 
 /* ---- arrivée : tout se pose, puis la première carte se retourne ---- */
+if (params.has('carte')) etat.i = parseInt(params.get('carte'), 10) - 2;   /* vue de contrôle : ?carte=N démarre à la carte N */
 distribuer();
 setTimeout(() => body.classList.remove('arrivee'), 60);
 
 /* Vues de contrôle pour la revue : ?etat=resolu | fin (sans animation), ?vue=editeurs (second écran seul). */
 if (params.get('vue') === 'editeurs') body.classList.add('sans-table');
+if (params.get('vue') === 'table') body.classList.add('sans-hero');
 if (params.has('etat')){
   body.classList.remove('arrivee');
   if (params.get('etat') === 'resolu') poser(true);
