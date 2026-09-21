@@ -73,14 +73,11 @@
     </div>
   </div>
 
-  <!-- Votre main : deux Magouilles, face visible -->
-  <aside class="main-joueur in" style="--d:520ms" aria-label="Votre main : deux Magouilles">
-    <p class="kick">Votre main · Deux Magouilles</p>
-    <div class="fan">
-      <figure class="m" tabindex="0"><img src="../v2/assets/mag_attaque_493.webp" alt="Magouille 49.3, carte Attaque : tu t'es trompé ? Plus dix pour toi quand même."></figure>
-      <figure class="m" tabindex="0"><img src="../v2/assets/mag_kompromat.webp" alt="Magouille Kompromat, carte Attaque : tu détiens une information compromettante sur le joueur de ton choix, il perd dix."></figure>
-    </div>
-    <p class="legende">Mauvaise réponse à table : tu pioches une Magouille. Ta vengeance commence.</p>
+  <!-- Votre main : vide au départ, une Magouille arrive à chaque erreur -->
+  <aside class="main-joueur in" style="--d:520ms" aria-label="Votre main">
+    <p class="kick" id="main-etiq">Votre main · Aucune Magouille</p>
+    <div class="fan" id="fan"><div class="vide" aria-hidden="true"></div></div>
+    <p class="legende" id="main-legende">Mauvaise réponse : tu pioches une Magouille. Ta vengeance commence.</p>
   </aside>
 
   <a class="cue kick in" style="--d:700ms" href="#editeurs">Éditeurs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9l8 8 8-8"/></svg></a>

@@ -118,16 +118,21 @@ body.resolu .sous .consigne{display:none;}
 body.resolu .sous .verdict{opacity:1;transform:none;}
 body.resolu .sous .suite{opacity:1;pointer-events:auto;}
 
-/* votre main : deux Magouilles face visible */
-.main-joueur{position:absolute;left:var(--pad);bottom:clamp(14px,2vh,22px);width:calc(var(--cw)*.95);}
-.main-joueur .kick{opacity:.6;margin-bottom:.7em;}
-.fan{position:relative;display:flex;align-items:flex-end;gap:calc(var(--cw)*.05);}
-.fan .m{position:relative;width:calc(var(--cw)*.42);flex:none;cursor:zoom-in;transform-origin:50% 100%;transition:transform .4s var(--ease),z-index 0s;outline:none;}
-.fan .m img{border-radius:calc(var(--cw)*.42/69.5*.8);box-shadow:0 8px 22px rgba(0,0,0,.5);transition:box-shadow .4s;}
-.fan .m:nth-child(1){transform:rotate(-3deg);} .fan .m:nth-child(2){transform:rotate(2.5deg) translateY(2px);}
+/* votre main : vide au départ, une Magouille arrive à chaque erreur */
+.main-joueur{position:absolute;left:var(--pad);bottom:clamp(14px,2vh,22px);width:calc(var(--cw)*1.1);}
+.main-joueur .kick{opacity:.6;margin-bottom:.7em;transition:opacity .3s;}
+.fan{position:relative;display:flex;align-items:flex-end;height:calc(var(--cw)*.38*94.9/69.5);}
+.fan .vide{width:calc(var(--cw)*.38);aspect-ratio:69.5/94.9;border:1.5px dashed rgba(242,237,226,.35);border-radius:calc(var(--cw)*.38/69.5*.8);transition:opacity .5s;}
+.fan.pleine .vide{display:none;}
+.fan .m{position:relative;width:calc(var(--cw)*.38);flex:none;cursor:zoom-in;transform-origin:50% 100%;transition:transform .7s var(--ease),opacity .6s ease;outline:none;}
+.fan .m + .m{margin-left:calc(var(--cw)*-.1);}
+.fan .m img{border-radius:calc(var(--cw)*.38/69.5*.8);box-shadow:0 8px 22px rgba(0,0,0,.5);transition:box-shadow .4s;}
+.fan .m:nth-child(1){--r:-3deg;} .fan .m:nth-child(2){--r:2.5deg;} .fan .m:nth-child(3){--r:-1.5deg;}
+.fan .m{transform:rotate(var(--r,0deg));}
+.fan .m.arrive{opacity:0;transform:translateY(-34px) rotate(calc(var(--r,0deg) - 5deg)) scale(1.06);}
 .fan .m:hover,.fan .m:focus-visible{transform:scale(1.9) translateY(-6%) rotate(0);z-index:5;}
 .fan .m:hover img,.fan .m:focus-visible img{box-shadow:0 30px 70px rgba(0,0,0,.65);}
-.main-joueur .legende{margin-top:1.2em;font-size:.82rem;line-height:1.35;opacity:.6;max-width:24em;text-wrap:pretty;}
+.main-joueur .legende{margin-top:1.2em;font-size:.82rem;line-height:1.35;opacity:.6;max-width:26em;text-wrap:pretty;transition:opacity .3s;}
 
 /* appel vers le bas */
 .cue{align-self:center;display:inline-flex;align-items:center;gap:.6em;text-decoration:none;opacity:.55;transition:opacity .3s;}

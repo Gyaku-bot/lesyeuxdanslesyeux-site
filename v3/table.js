@@ -8,7 +8,35 @@ const $ = id => document.getElementById(id);
 const slot = $('slot'), verdict = $('verdict'), suite = $('suite'), compteur = $('compteur');
 const buls = { 0: $('bul-info'), 1: $('bul-intox') };
 const params = new URLSearchParams(location.search);
-const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false };
+const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false, main: 0 };
+
+/* Les Magouilles qu'on pioche, dans l'ordre : les deux Attaques emblématiques, puis la Parade type. */
+const MAGOUILLES = [
+  { nom: 'le 49.3', src: '../v2/assets/mag_attaque_493.webp', alt: 'Magouille 49.3, carte Attaque : tu t\'es trompé ? Plus dix pour toi quand même.', effet: 'Tu t\'es trompé ? +10 pour toi quand même.' },
+  { nom: 'le Kompromat', src: '../v2/assets/mag_kompromat.webp', alt: 'Magouille Kompromat, carte Attaque : tu détiens une information compromettante sur le joueur de ton choix, il perd dix.', effet: 'Le joueur de ton choix perd 10.' },
+  { nom: 'l\'Immunité parlementaire', src: '../v2/assets/mag_parade_immunite.webp', alt: 'Magouille Immunité parlementaire, carte Parade : quand une Magouille te vise, il ne se passe rien.', effet: 'Quand une Magouille te vise : il ne se passe rien.' },
+];
+
+/* ---- piocher : la Magouille arrive dans la main, face visible ---- */
+function piocher(){
+  const m = MAGOUILLES[etat.main];
+  if (!m) return null;
+  etat.main++;
+  const fan = $('fan');
+  fan.classList.add('pleine');
+  const fig = document.createElement('figure');
+  fig.className = 'm arrive';
+  fig.tabIndex = 0;
+  fig.innerHTML = `<img src="${m.src}" alt="${m.alt}">`;
+  fan.appendChild(fig);
+  requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.remove('arrive')));
+  const n = etat.main;
+  $('main-etiq').textContent = `Votre main · ${n === 1 ? 'Une Magouille' : n + ' Magouilles'}`;
+  $('main-legende').textContent = n < MAGOUILLES.length
+    ? `${m.nom.charAt(0).toUpperCase() + m.nom.slice(1)} : ${m.effet} À jouer à la phase Magouilles. Survolez pour lire la carte.`
+    : `${m.nom.charAt(0).toUpperCase() + m.nom.slice(1)} : ${m.effet} Votre main est pleine, à table on s'arrête là.`;
+  return m;
+}
 
 function hl(t){ return t.replace(/\[\[(.+?)\]\]/g, '<span class="hl">$1</span>'); }
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
@@ -62,9 +90,14 @@ function poser(ditIntox){
   body.classList.add('resolu');
   etat.carte.classList.add(c.ko ? 'ko' : 'ok');
   const ditMot = ditIntox ? 'intox' : 'info', etaitMot = c.ko ? 'intox' : 'info';
-  verdict.innerHTML = juste
-    ? `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était bien ${etaitMot}. <b>Dix points dans les sondages.</b>`
-    : `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était <b class="${c.ko ? 'r' : 'v'}">${etaitMot}</b>. À table, vous piochez une Magouille. C'est là que le 49.3 sert.`;
+  if (juste){
+    verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était bien ${etaitMot}. <b>Dix points dans les sondages.</b>`;
+  } else {
+    const prochaine = MAGOUILLES[etat.main];
+    verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était <b class="${c.ko ? 'r' : 'v'}">${etaitMot}</b>. `
+      + (prochaine ? `Vous piochez une Magouille : <b>${prochaine.nom}</b> arrive dans votre main.` : `Vous piochez une Magouille. Votre main est déjà pleine.`);
+    setTimeout(piocher, 700);
+  }
 }
 
 /* ---- la suivante : la carte s'efface, la prochaine se retourne ---- */
@@ -114,5 +147,6 @@ if (params.get('vue') === 'editeurs') body.classList.add('sans-table');
 if (params.has('etat')){
   body.classList.remove('arrivee');
   if (params.get('etat') === 'resolu') poser(true);
-  if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; bilan(); }
+  if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; piocher(); piocher(); bilan(); }
+  if (params.get('etat') === 'erreur'){ poser(false); }
 }
