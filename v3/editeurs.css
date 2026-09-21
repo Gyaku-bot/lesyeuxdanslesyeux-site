@@ -45,8 +45,8 @@ b{font-weight:700;} a{color:inherit;} img{display:block;max-width:100%;}
 @media (max-width:1200px){.corps .entree{white-space:normal;}}
 .raisons{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2em;}
 .raisons .art{display:flex;flex-direction:column;align-items:flex-start;gap:.55em;margin-bottom:.9em;font-family:var(--mono);font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1;}
-.raisons .art .num{background:var(--rouge);color:#fff;font-size:.66rem;padding:.6em .8em .5em;border-radius:.2em;white-space:nowrap;}
-.raisons .art .nom{color:var(--rouge);font-size:.6rem;white-space:nowrap;}
+.raisons .art .num{color:var(--rouge);font-size:.6rem;white-space:nowrap;}
+.raisons .art .nom{background:var(--rouge);color:#fff;font-size:.66rem;padding:.6em .8em .5em;border-radius:.2em;white-space:nowrap;}
 .raisons h3{font-weight:700;text-transform:uppercase;line-height:1.1;font-size:.86rem;letter-spacing:.01em;margin-bottom:.6em;white-space:nowrap;}
 .raisons p{font-size:.95rem;}
 .eventail{display:flex;justify-content:center;align-items:flex-end;padding:1.2em 0 1.6em;}
