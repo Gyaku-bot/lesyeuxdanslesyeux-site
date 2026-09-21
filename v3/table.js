@@ -10,11 +10,13 @@ const buls = { 0: $('bul-info'), 1: $('bul-intox') };
 const params = new URLSearchParams(location.search);
 const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false, main: 0, score: 0 };
 
-/* Les Magouilles qu'on pioche, dans l'ordre : les deux Attaques emblématiques, puis la Parade type. */
+/* Les Magouilles qu'on pioche, une par erreur, dans l'ordre. Textes = ceux imprimés sur les cartes. */
 const MAGOUILLES = [
-  { nom: 'le 49.3', src: '../v2/assets/mag_attaque_493.webp', alt: 'Magouille 49.3, carte Attaque : tu t\'es trompé ? Plus dix pour toi quand même.', effet: 'Tu t\'es trompé ? +10 pour toi quand même.' },
-  { nom: 'le Kompromat', src: '../v2/assets/mag_kompromat.webp', alt: 'Magouille Kompromat, carte Attaque : tu détiens une information compromettante sur le joueur de ton choix, il perd dix.', effet: 'Le joueur de ton choix perd 10.' },
-  { nom: 'l\'Immunité parlementaire', src: '../v2/assets/mag_parade_immunite.webp', alt: 'Magouille Immunité parlementaire, carte Parade : quand une Magouille te vise, il ne se passe rien.', effet: 'Quand une Magouille te vise : il ne se passe rien.' },
+  { nom: 'le 49.3', src: '../v2/assets/mag_attaque_493.webp', alt: 'Magouille 49.3, carte Attaque.', effet: 'Tu t\'es trompé ? +10 pour toi quand même.' },
+  { nom: 'le Kompromat', src: '../v2/assets/mag_kompromat.webp', alt: 'Magouille Kompromat, carte Attaque.', effet: 'Tu détiens une information compromettante sur le joueur de ton choix : il perd 10.' },
+  { nom: 'la Corruption', src: '../v2/assets/mag_corruption.webp', alt: 'Magouille Corruption, carte Attaque.', effet: 'Le joueur de ton choix ne peut plus t\'attaquer jusqu\'à la fin de la manche.' },
+  { nom: 'l\'Immunité parlementaire', src: '../v2/assets/mag_parade_immunite.webp', alt: 'Magouille Immunité parlementaire, carte Parade.', effet: 'Quand une Magouille te vise : il ne se passe rien.' },
+  { nom: 'la Perquisition', src: '../v2/assets/mag_perquisition.webp', alt: 'Magouille Perquisition, carte Attaque.', effet: 'Prends une Magouille face cachée au joueur de ton choix.' },
 ];
 
 /* ---- piocher : la Magouille arrive dans la main, face visible ---- */
@@ -29,13 +31,22 @@ function piocher(){
   fig.tabIndex = 0;
   fig.innerHTML = `<img src="${m.src}" alt="${m.alt}">`;
   fan.appendChild(fig);
+  placerMain();
   requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.remove('arrive')));
   const n = etat.main;
   $('main-etiq').textContent = `Votre main · ${n === 1 ? 'Une Magouille' : n + ' Magouilles'}`;
-  $('main-legende').textContent = n < MAGOUILLES.length
-    ? `${m.nom.charAt(0).toUpperCase() + m.nom.slice(1)} : ${m.effet} À jouer à la phase Magouilles. Survolez pour lire la carte.`
-    : `${m.nom.charAt(0).toUpperCase() + m.nom.slice(1)} : ${m.effet} Votre main est pleine, à table on s'arrête là.`;
+  $('main-legende').textContent = `${m.nom.charAt(0).toUpperCase() + m.nom.slice(1)} : ${m.effet} À jouer à la phase Magouilles. Survolez pour lire la carte.`;
   return m;
+}
+/* l'éventail se resserre à mesure : la main garde la même largeur, quelle que soit la taille */
+function placerMain(){
+  const cartes = [...$('fan').querySelectorAll('.m')];
+  const n = cartes.length;
+  cartes.forEach((c, k) => {
+    const pas = n > 1 ? Math.min(0.30, 0.74 / (n - 1)) : 0;       /* en fraction de --cw ; 0.74 = largeur de la main moins une carte */
+    c.style.left = `calc(var(--cw) * ${(k * pas).toFixed(3)})`;
+    c.style.setProperty('--r', `${((k - (n - 1) / 2) * 3).toFixed(1)}deg`);
+  });
 }
 
 function hl(t){ return t.replace(/\[\[(.+?)\]\]/g, '<span class="hl">$1</span>'); }
@@ -131,7 +142,7 @@ function poser(ditIntox){
   } else {
     const prochaine = MAGOUILLES[etat.main];
     verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était <b class="${c.ko ? 'r' : 'v'}">${etaitMot}</b>. `
-      + (prochaine ? `Vous piochez une Magouille : <b>${prochaine.nom}</b> arrive dans votre main.` : `Vous piochez une Magouille. Votre main est déjà pleine.`);
+      + `Vous piochez une Magouille : <b>${prochaine.nom}</b> arrive dans votre main.`;
     setTimeout(piocher, 700);
   }
 }
@@ -190,4 +201,5 @@ if (params.has('etat')){
   if (params.get('etat') === 'resolu') poser(true);
   if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; etat.score = 30; afficherScore(30); piocher(); piocher(); bilan(); }
   if (params.get('etat') === 'erreur'){ poser(false); }
+  if (params.get('etat') === 'main5'){ for (let k = 0; k < 5; k++) piocher(); }
 }

@@ -96,6 +96,8 @@ Découpe au format FINI 63,5 × 88,9 mm à 300 dpi (750 × 1050 px), fond perdu 
 | mag_kompromat | Kompromat, Attaque | 750×1050 | 54 Ko | 40 Ko |
 | mag_attaque_493 | 49.3, Attaque | 750×1050 | 54 Ko | 38 Ko |
 | mag_parade_immunite | Immunité parlementaire, Parade | 750×1050 | 62 Ko | 43 Ko |
+| mag_corruption | Corruption, Attaque (découpée le 21/09 pour la V3 desktop, page 3 de MAGOUILLES_DEF.pdf) | 750×1050 | 65 Ko | 47 Ko |
+| mag_perquisition | Perquisition, Attaque (découpée le 21/09, page 7) | 750×1050 | 50 Ko | 37 Ko |
 | dos_casserole | dos bleu nuit « Casserole » | 750×1050 | 77 Ko | 15 Ko |
 | dos_magouille | dos rouge « Magouille » | 750×1050 | 92 Ko | 17 Ko |
 | bulletin_info | aplat vert INFO | 750×1050 | 368 Ko | 12 Ko |
@@ -108,6 +110,8 @@ Textes imprimés sur les ES et Magouilles (pour réutilisation HTML) :
 - KOMPROMAT (Attaque) : `Tu détiens une information compromettante sur le joueur de ton choix : il perd 10.` · Quand : `À la phase Magouilles, à ton tour de parole`
 - 49.3 (Attaque) : `Tu t'es trompé ? +10 pour toi quand même.` · Quand : `À la phase Magouilles, à ton tour de parole, seulement si tu t'es trompé`
 - IMMUNITÉ PARLEMENTAIRE (Parade) : `Quand une Magouille te vise : il ne se passe rien.` · Quand : `En réaction, à tout moment`
+- CORRUPTION (Attaque) : `Le joueur de ton choix ne peut plus t'attaquer jusqu'à la fin de la manche.` · Quand : `À la phase Magouilles, à ton tour de parole`
+- PERQUISITION (Attaque) : `Prends une Magouille face cachée au joueur de ton choix.` · Quand : `À la phase Magouilles, à ton tour de parole`
 - Bulletins : INFO `C'est vrai. Ça ne veut pas dire que c'est rassurant.` · INTOX `C'est faux. Circulez, il n'y a rien à voir.`
 
 ## 4. Méthode et difficultés
@@ -131,3 +135,6 @@ R2. AP-05/08 · `Ordonnance de 1958` · FAIT : `Après son départ, tout ministr
 R3. OA-10/03 · `Affaire Urba · 1973-1990` · FAIT : `Pendant dix-sept ans, un bureau d'études a prélevé [2 à 4 %] sur des marchés publics pour financer un grand parti, via de fausses factures.`
 
 Anatomie de la carte imprimée, de haut en bas (pour la reconstruire en HTML) : kicker mono `CASSEROLE` à gauche et `COTE XX-NN/NN` à droite (5,6 pt, espacé) · manchette Plex Sans Condensed 700 (13 pt, auto 11) en capitales · filet rouge 12 × 0,6 mm · fait Plex Sans Condensed 500 (8,2 pt, auto jusqu'à 7,0), span rouge · ligne d'arrêt `INFO OU INTOX ?` en mono 7 pt centré sur un filet encre · [après le vote :] tampon incliné de 4°, bord 0,7 mm, Archivo Black, INFO vert #1B7A43 / INTOX rouge #A8332B · révélation 600 (8,4 pt) · chute 500 italique gris #5A6373 avec filet rouge à gauche, entre guillemets · pied mono `REGISTRE DES SCELLÉS, P. N` + œil. Papier #FBFAF6, encre #0E1B33. Marges intérieures 7 mm (6 en bas) sur une carte de 63,5 × 88,9 mm.
+
+## 6. Découpe du 21/09 (V3 desktop) : méthode sans PyMuPDF
+`pdftotext -bbox` sur `PRÊT À IMPRIMER/MAGOUILLES_DEF.pdf` (14 pages, rectos = pages impaires) donne la position du kicker « MAGOUILLE » de chaque tuile (pas 71,9 mm en x, 97,9 mm en y ; premier kicker à 12,9 / 12,5 mm) ; dans une carte finie 750 × 1050 px, l'encre du kicker commence à 4,15 / 4,06 mm du bord : origine de découpe = kicker moins cet écart. Rendu `pdftoppm -r 300`, découpe PIL. Sources jetables dans `/tmp/jds_mag/`.
