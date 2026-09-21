@@ -8,7 +8,7 @@ const $ = id => document.getElementById(id);
 const slot = $('slot'), verdict = $('verdict'), suite = $('suite'), compteur = $('compteur');
 const buls = { 0: $('bul-info'), 1: $('bul-intox') };
 const params = new URLSearchParams(location.search);
-const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false, main: 0 };
+const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false, main: 0, score: 0 };
 
 /* Les Magouilles qu'on pioche, dans l'ordre : les deux Attaques emblématiques, puis la Parade type. */
 const MAGOUILLES = [
@@ -79,6 +79,40 @@ function distribuer(){
   requestAnimationFrame(() => requestAnimationFrame(() => slot.classList.add('face')));
 }
 
+/* ---- les sondages : le +10 monte de la carte jusqu'au score ---- */
+function marquer(){
+  const a = etat.carte.getBoundingClientRect(), b = $('pct').getBoundingClientRect();
+  const plus = document.createElement('div');
+  plus.className = 'plus';
+  plus.textContent = '+10';
+  plus.style.left = (a.left + a.width / 2) + 'px';
+  plus.style.top = (a.top + a.height * .62) + 'px';
+  document.body.appendChild(plus);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    plus.classList.add('visible');
+    plus.style.left = (b.left + b.width / 2) + 'px';
+    plus.style.top = (b.top + b.height / 2) + 'px';
+    plus.style.fontSize = '18px';
+  }));
+  setTimeout(() => { plus.classList.remove('visible'); }, 800);
+  setTimeout(() => { plus.remove(); afficherScore(etat.score); }, 1100);
+}
+function afficherScore(cible){
+  const el = $('pct'), pct = el.parentElement;
+  let v = parseInt(el.textContent, 10) || 0;
+  pct.classList.add('pop');
+  const tick = setInterval(() => {
+    v = Math.min(cible, v + 1);
+    el.textContent = v;
+    if (v >= cible){ clearInterval(tick); pct.classList.remove('pop'); }
+  }, 28);
+  document.querySelectorAll('.piste .pt').forEach(p => {
+    const val = parseInt(p.dataset.v, 10);
+    const on = val <= cible;
+    if (on && !p.classList.contains('on')){ p.classList.add('on', 'neuf'); setTimeout(() => p.classList.remove('neuf'), 500); }
+  });
+}
+
 /* ---- poser son bulletin ---- */
 function poser(ditIntox){
   if (etat.resolu || etat.occupe || body.classList.contains('arrivee')) return;
@@ -91,7 +125,9 @@ function poser(ditIntox){
   etat.carte.classList.add(c.ko ? 'ko' : 'ok');
   const ditMot = ditIntox ? 'intox' : 'info', etaitMot = c.ko ? 'intox' : 'info';
   if (juste){
-    verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était bien ${etaitMot}. <b>Dix points dans les sondages.</b>`;
+    etat.score += 10;
+    verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était bien ${etaitMot}. <b class="v">+10</b> dans les sondages.`;
+    setTimeout(marquer, 500);
   } else {
     const prochaine = MAGOUILLES[etat.main];
     verdict.innerHTML = `Vous aviez dit <b class="${ditIntox ? 'r' : 'v'}">${ditMot}</b>. C'était <b class="${c.ko ? 'r' : 'v'}">${etaitMot}</b>. `
@@ -123,7 +159,12 @@ function bilan(){
     4: `Quatre erreurs sur cinq. Le réel dépasse votre imagination. Il dépasse celle de tout le monde.`,
     5: `Cinq erreurs sur cinq. Vous avez cru tout le faux et douté de tout le vrai. Bienvenue à table.`,
   };
-  $('phrase').textContent = ph[fautes];
+  const score = etat.score, manque = 50 - score;
+  $('final-pct').textContent = `${score} %`;
+  const oral = score >= 50
+    ? `Vous êtes à 50 %. Vous nouez la cravate : le grand oral vous attend. Trois casseroles, deux bonnes réponses, élu.`
+    : `Il vous manque ${manque} points pour être candidat au grand oral.`;
+  $('phrase').textContent = `${oral} ${ph[fautes]}`;
   $('bilan').setAttribute('aria-hidden', 'false');
 }
 
@@ -147,6 +188,6 @@ if (params.get('vue') === 'editeurs') body.classList.add('sans-table');
 if (params.has('etat')){
   body.classList.remove('arrivee');
   if (params.get('etat') === 'resolu') poser(true);
-  if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; piocher(); piocher(); bilan(); }
+  if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; etat.score = 30; afficherScore(30); piocher(); piocher(); bilan(); }
   if (params.get('etat') === 'erreur'){ poser(false); }
 }

@@ -134,6 +134,27 @@ body.resolu .sous .suite{opacity:1;pointer-events:auto;}
 .fan .m:hover img,.fan .m:focus-visible img{box-shadow:0 30px 70px rgba(0,0,0,.65);}
 .main-joueur .legende{margin-top:1.2em;font-size:.82rem;line-height:1.35;opacity:.6;max-width:26em;text-wrap:pretty;transition:opacity .3s;}
 
+/* vos sondages : en bas à droite, symétrique de la main */
+.sondages{position:absolute;right:var(--pad);bottom:clamp(14px,2vh,22px);text-align:right;width:calc(var(--cw)*.8);transition:opacity .5s;}
+body.fin .sondages{opacity:0;pointer-events:none;}
+.sondages .kick{opacity:.6;margin-bottom:.2em;}
+.sondages .pct{font-family:var(--black);font-size:clamp(40px,4.2vw,64px);line-height:1;letter-spacing:.01em;}
+.sondages .pct span{display:inline-block;min-width:1.2em;text-align:right;transition:transform .25s var(--ease);}
+.sondages .pct.pop span{transform:scale(1.08);}
+.piste{display:flex;justify-content:flex-end;gap:calc(var(--cw)*.028);margin:.7em 0 .6em;}
+.piste .pt{position:relative;width:calc(var(--cw)*.05);height:calc(var(--cw)*.05);border-radius:50%;border:1.5px solid rgba(242,237,226,.45);transition:background .4s,border-color .4s,transform .4s var(--ease);}
+.piste .pt.on{background:var(--creme);border-color:var(--creme);}
+.piste .pt.oral{border-color:#e8776d;}
+.piste .pt.oral.on{background:#e8776d;}
+.piste .pt.oral::after{content:"Grand oral";position:absolute;right:0;top:130%;font-family:var(--mono);font-size:.55rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#e8776d;white-space:nowrap;}
+.piste .pt.neuf{transform:scale(1.35);}
+.sondages .legende{margin-top:1.4em;font-size:.82rem;line-height:1.35;opacity:.6;text-wrap:pretty;}
+.plus{position:fixed;z-index:30;font-family:var(--black);font-size:clamp(28px,2.6vw,40px);color:#63c98e;letter-spacing:.02em;pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:left .9s var(--ease),top .9s var(--ease),opacity .35s ease,font-size .9s var(--ease);text-shadow:0 4px 18px rgba(0,0,0,.5);}
+.plus.visible{opacity:1;}
+.bilan .final{margin-top:clamp(22px,4vh,44px);display:flex;flex-direction:column;align-items:center;gap:.3em;}
+.bilan .final .k{opacity:.6;}
+.bilan .final .n{font-family:var(--black);font-size:clamp(44px,5vw,80px);line-height:1;}
+
 /* appel vers le bas */
 .cue{align-self:center;display:inline-flex;align-items:center;gap:.6em;text-decoration:none;opacity:.55;transition:opacity .3s;}
 .cue:hover{opacity:1;}
@@ -147,7 +168,7 @@ body.fin .bilan{opacity:1;transform:none;pointer-events:auto;}
 .bilan .promesse{font-weight:700;text-transform:uppercase;line-height:.94;font-size:clamp(44px,6.4vw,100px);text-wrap:balance;}
 .bilan .promesse .faux{color:#e8776d;}
 .bilan .promesse .pb{display:block;margin-top:.35em;font-size:.4em;line-height:1.05;font-weight:600;text-transform:none;letter-spacing:0;opacity:.95;}
-.bilan .phrase{margin:clamp(22px,4vh,44px) auto 0;font-size:clamp(19px,1.6vw,26px);font-weight:600;max-width:34em;text-wrap:balance;}
+.bilan .phrase{margin:clamp(14px,2.4vh,28px) auto 0;font-size:clamp(19px,1.6vw,26px);font-weight:600;max-width:34em;text-wrap:balance;}
 .bilan .reste{margin:.6em auto 0;font-size:clamp(15px,1.1vw,18px);opacity:.75;max-width:38em;text-wrap:balance;}
 .bilan .actions{display:flex;justify-content:center;gap:1em;margin-top:clamp(22px,4vh,44px);}
 
