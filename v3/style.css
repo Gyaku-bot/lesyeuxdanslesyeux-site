@@ -147,7 +147,12 @@ body.fin .jeu{opacity:0;transform:translateY(-8px);pointer-events:none;position:
 .bul .k{opacity:.85;}
 .bul .mot{font-family:var(--black);font-size:calc(var(--cw)*.5*.17);letter-spacing:.05em;text-transform:uppercase;line-height:1;margin:auto 0;}
 .bul .ph{font-weight:500;line-height:1.3;font-size:calc(var(--cw)*.5*.068);text-wrap:pretty;opacity:.95;}
-.bul:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.14);}
+/* avant le vote : chaque bulletin se soulève de 3 px et se repose, l'un puis l'autre, comme une hésitation */
+body:not(.arrivee):not(.resolu):not(.fin) .bul{animation:hesite 4s var(--ease) infinite;}
+body:not(.arrivee):not(.resolu):not(.fin) .bul.info{animation-delay:1.2s;}
+body:not(.arrivee):not(.resolu):not(.fin) .bul.intox{animation-delay:3.2s;}
+@keyframes hesite{0%,100%{transform:translateY(0);box-shadow:0 10px 28px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.07)}10%{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.46),inset 0 0 0 1px rgba(255,255,255,.14)}20%{transform:translateY(0);box-shadow:0 10px 28px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.07)}}
+.bul:hover{animation:none!important;transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.14);}
 .bul:focus-visible{outline:2px solid var(--creme);outline-offset:4px;}
 body.resolu .bul{opacity:.4;pointer-events:none;transform:none;filter:saturate(.7);}
 body.resolu .bul.choisi{opacity:1;filter:none;box-shadow:0 0 0 2px var(--creme),0 10px 28px rgba(0,0,0,.4);}
