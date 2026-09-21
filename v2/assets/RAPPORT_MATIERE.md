@@ -138,3 +138,6 @@ Anatomie de la carte imprimée, de haut en bas (pour la reconstruire en HTML) : 
 
 ## 6. Découpe du 21/09 (V3 desktop) : méthode sans PyMuPDF
 `pdftotext -bbox` sur `PRÊT À IMPRIMER/MAGOUILLES_DEF.pdf` (14 pages, rectos = pages impaires) donne la position du kicker « MAGOUILLE » de chaque tuile (pas 71,9 mm en x, 97,9 mm en y ; premier kicker à 12,9 / 12,5 mm) ; dans une carte finie 750 × 1050 px, l'encre du kicker commence à 4,15 / 4,06 mm du bord : origine de découpe = kicker moins cet écart. Rendu `pdftoppm -r 300`, découpe PIL. Sources jetables dans `/tmp/jds_mag/`.
+
+## 7. Changement des cinq Casseroles (21/09/2026 soir, choix de Quentin)
+Nouvel ordre dans `cartes.js` : 1 DA-01/02 Le logiciel Scribe (INFO, p. 3) · 2 FE-02/01 Les chaussettes de Perpignan (INFO, p. 5) · 3 DA-01/09 Stock stratégique de l'État, les masques (INTOX, p. 4) · 4 AP-05/11 Le coiffeur de Hollande (INTOX, p. 15) · 5 EL-07/02 Bouches-du-Rhône 2004, le liseron (INTOX, p. 18). Deux INFO, trois INTOX. Les cinq précédentes (De Gaulle, diamants, Cahuzac, amendement d'appel, homards) restent découpées en PNG/WebP dans ce dossier. Pages lues dans `design/06_SCELLES/scelles_feuillets.json` (vérifié : DE-03/01 → 8 comme avant).
