@@ -12,11 +12,11 @@ const etat = { i: -1, reponses: [], resolu: false, carte: null, occupe: false, m
 
 /* Les Magouilles qu'on pioche, une par erreur, dans l'ordre. Textes = ceux imprimés sur les cartes. */
 const MAGOUILLES = [
-  { nom: 'le 49.3', src: '../v2/assets/mag_attaque_493.webp', alt: 'Magouille 49.3, carte Attaque.', effet: 'Tu t\'es trompé ? +10 pour toi quand même.' },
-  { nom: 'le Kompromat', src: '../v2/assets/mag_kompromat.webp', alt: 'Magouille Kompromat, carte Attaque.', effet: 'Tu détiens une information compromettante sur le joueur de ton choix : il perd 10.' },
-  { nom: 'la Corruption', src: '../v2/assets/mag_corruption.webp', alt: 'Magouille Corruption, carte Attaque.', effet: 'Le joueur de ton choix ne peut plus t\'attaquer jusqu\'à la fin de la manche.' },
-  { nom: 'l\'Immunité parlementaire', src: '../v2/assets/mag_parade_immunite.webp', alt: 'Magouille Immunité parlementaire, carte Parade.', effet: 'Quand une Magouille te vise : il ne se passe rien.' },
-  { nom: 'la Perquisition', src: '../v2/assets/mag_perquisition.webp', alt: 'Magouille Perquisition, carte Attaque.', effet: 'Prends une Magouille face cachée au joueur de ton choix.' },
+  { nom: 'le 49.3', src: 'v2/assets/mag_attaque_493.webp', alt: 'Magouille 49.3, carte Attaque.', effet: 'Tu t\'es trompé ? +10 pour toi quand même.' },
+  { nom: 'le Kompromat', src: 'v2/assets/mag_kompromat.webp', alt: 'Magouille Kompromat, carte Attaque.', effet: 'Tu détiens une information compromettante sur le joueur de ton choix : il perd 10.' },
+  { nom: 'la Corruption', src: 'v2/assets/mag_corruption.webp', alt: 'Magouille Corruption, carte Attaque.', effet: 'Le joueur de ton choix ne peut plus t\'attaquer jusqu\'à la fin de la manche.' },
+  { nom: 'l\'Immunité parlementaire', src: 'v2/assets/mag_parade_immunite.webp', alt: 'Magouille Immunité parlementaire, carte Parade.', effet: 'Quand une Magouille te vise : il ne se passe rien.' },
+  { nom: 'la Perquisition', src: 'v2/assets/mag_perquisition.webp', alt: 'Magouille Perquisition, carte Attaque.', effet: 'Prends une Magouille face cachée au joueur de ton choix.' },
 ];
 
 /* ---- piocher : la Magouille arrive dans la main, face visible ---- */

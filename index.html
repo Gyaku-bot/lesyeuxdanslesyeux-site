@@ -3,86 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Les yeux dans les yeux · Party game, politique française documentée · Prototype</title>
-<meta name="description" content="Un party game où toutes les dingueries de la politique française sont vraies, jugées ou déclarées publiquement, et sourcées carte par carte. Prototype 2026, 3 à 8 joueurs, 20 à 30 minutes.">
-<meta property="og:title" content="Les yeux dans les yeux · Prototype">
-<meta property="og:description" content="Toutes les casseroles de ce jeu sont vraies et sourcées. Sauf celles qui sont fausses. C'est tout le problème.">
-<meta property="og:image" content="https://lesyeuxdanslesyeux.info/cartes/cass_micro_cannes.png">
+<title>Les yeux dans les yeux · Tout est vrai. Sauf ce qui est faux.</title>
+<meta name="description" content="Un party game où les dingueries de la politique française sont jugées ou déclarées publiquement, et sourcées carte par carte. Vraies, ou déformées. Cinq Casseroles à trancher : info ou intox ?">
+<meta property="og:title" content="Les yeux dans les yeux">
+<meta property="og:description" content="Tout est vrai. Sauf ce qui est faux. C'est bien tout le problème. Cinq Casseroles à trancher.">
+<meta property="og:image" content="https://lesyeuxdanslesyeux.info/assets/og_boite.png">
 <meta property="og:url" content="https://lesyeuxdanslesyeux.info/">
+<meta name="theme-color" content="#0E1B33">
+<script>
+/* Aiguillage : une seule URL, deux versions. Doigt ou écran étroit = version mobile (V2 pour l'instant), souris = la table. */
+(function(){
+  var mobile = window.matchMedia('(pointer:coarse)').matches || window.innerWidth < 900;
+  if (mobile && !/(^|[?&])force=desktop\b/.test(location.search)) location.replace('v2/' + location.hash);
+})();
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="arrivee">
 
-<div class="tete">
-  <span>Prototype V2.1 · Édition 2026</span>
-  <span class="meta">Party game · Politique française documentée</span>
-</div>
-<div class="titre-row">
-  <h1>Les yeux<br>dans les yeux</h1>
-  <div class="tampon"><span>Prototype</span></div>
-</div>
-<div class="accroche">Toutes les casseroles de ce jeu sont vraies et sourcées. <u>Sauf celles qui sont fausses.</u> C'est tout le problème.</div>
-<div class="strip"><div>3 à 8 joueurs</div><div>20 à 30 minutes</div><div>Dès 16 ans</div><div>Appris en 2 minutes</div></div>
+<!-- ÉCRAN 0 · LA BOÎTE -->
+<section class="hero" id="haut">
+  <img class="hero-img" src="assets/boite_mockup.webp" alt="La boîte du prototype Les yeux dans les yeux, avec des cartes Casserole et Magouille face cachée">
+  <div class="hero-voile" aria-hidden="true"></div>
+  <div class="hero-txt in" style="--d:120ms">
+    <p class="kick">Party game · 3 à 8 joueurs · Prototype 2026</p>
+    <h1>Vous allez rire.<br><span class="chute">Puis vérifier.</span></h1>
+    <p class="lede">On vous lit une affaire politique française. Vous votez : info ou intox ? Emplois fictifs, frais de bouche, dromadaire offert. Le plus dur, ce n'est pas de repérer le faux. <b>C'est d'accepter le vrai.</b></p>
+    <div class="actions">
+      <a class="btn plein grand" href="#table">Testez</a>
+      <a class="lien kick" href="#editeurs">Vous éditez des jeux ?</a>
+    </div>
+  </div>
+  <a class="cue kick hero-cue in" style="--d:600ms" href="#table" aria-label="Descendre vers la table"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9l8 8 8-8"/></svg></a>
+</section>
 
-<div class="pitch">
-  <span class="kick">Le pitch</span>
-  <p><b>LES YEUX DANS LES YEUX.</b> Un party game où toutes les dingueries de la politique française sont vraies, jugées ou déclarées publiquement, et sourcées carte par carte.</p>
-  <p>À chaque tour, le Porte-parole lit une <b>Casserole</b>. La table vote <span class="pill ok">Info</span> ou <span class="pill ko">Intox</span>, les yeux dans les yeux. Les <b>Magouilles</b> (49.3, Kompromat, Grâce présidentielle) font le reste. Le premier à 50 % passe son grand oral et se fait élire.</p>
-  <p class="iti">L'INA rencontre Blanc Manger Coco : le premier jeu d'archives, pas un énième jeu de satire.</p>
-</div>
+<!-- ÉCRAN 1 · LA TABLE -->
+<section class="table" id="table">
 
-<section>
-  <div class="art"><span class="no">Les cartes</span><h2>Quelques pièces du dossier</h2></div>
-  <div class="cartes">
-    <figure><img class="carte" src="cartes/cass_micro_cannes.png" alt="Casserole G20 de Cannes 2011, verdict Info"><div class="legende">Casserole · Info</div></figure>
-    <figure><img class="carte" src="cartes/cass_dromadaire.png" alt="Casserole Tombouctou 2013, verdict Intox"><div class="legende">Casserole · Intox</div></figure>
-    <figure><img class="carte" src="cartes/cass_coiffeur.png" alt="Casserole L'Élysée 2016, verdict Intox"><div class="legende">Casserole · Intox</div></figure>
-    <figure><img class="carte" src="cartes/cass_ecotaxe.png" alt="Casserole L'écotaxe 2014, verdict Info"><div class="legende">Casserole · Info</div></figure>
-    <figure><img class="carte" src="cartes/mag_493.png" alt="Magouille 49.3"><div class="legende">Magouille · Attaque</div></figure>
-    <figure><img class="carte" src="cartes/es_penurie.png" alt="Édition spéciale La pénurie de carburant"><div class="legende">Édition spéciale</div></figure>
+  <div class="jeu" id="jeu">
+    <p class="compteur kick in" style="--d:120ms" id="compteur">Casserole 1 sur 5</p>
+
+    <div class="scene">
+      <button class="bul info in" style="--d:260ms" id="bul-info" data-v="0" aria-label="Voter Info">
+        <span class="k kick">Bulletin</span>
+        <span class="mot">Info</span>
+        <span class="ph">C'est vrai. Ça ne veut pas dire que c'est rassurant.</span>
+      </button>
+
+      <div class="paquet in" style="--d:160ms">
+        <div class="dos d2" id="dos2"></div>
+        <div class="dos d1" id="dos1"></div>
+        <div class="slot" id="slot"></div>
+      </div>
+
+      <button class="bul intox in" style="--d:320ms" id="bul-intox" data-v="1" aria-label="Voter Intox">
+        <span class="k kick">Bulletin</span>
+        <span class="mot">Intox</span>
+        <span class="ph">C'est faux. Circulez, il n'y a rien à voir.</span>
+      </button>
+    </div>
+
+    <div class="sous in" style="--d:400ms" id="sous">
+      <p class="consigne" id="consigne">Un fait politique français, lu par le Porte-parole. <b>Posez votre bulletin.</b></p>
+      <p class="verdict" id="verdict" aria-live="polite"></p>
+      <button class="suite" id="suite">Casserole suivante <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
+    </div>
+  </div>
+
+  <!-- Le bilan prend la place du jeu -->
+  <div class="bilan" id="bilan" aria-hidden="true">
+    <h1 class="promesse">Vous avez douté.<br><span class="faux">Eux, jamais.</span></h1>
+    <p class="final"><span class="k kick">Vos sondages</span><span class="n" id="final-pct">30 %</span></p>
+    <p class="phrase" id="phrase"></p>
+    <p class="reste">Il en reste quatre-vingt-quinze dans la boîte. Chacune est vraie, ou déformée. Chacune est cotée au Registre des scellés.</p>
+    <div class="actions">
+      <a class="btn plein" href="#editeurs">Vous éditez des jeux ?</a>
+      <a class="btn" href="mailto:contact@lesyeuxdanslesyeux.info?subject=Proposition%20de%20jeu%20%C2%B7%20Les%20yeux%20dans%20les%20yeux">Écrire à l'auteur</a>
+    </div>
+  </div>
+
+  <!-- Votre main : vide au départ, une Magouille arrive à chaque erreur -->
+  <aside class="main-joueur in" style="--d:520ms" aria-label="Votre main">
+    <p class="kick" id="main-etiq">Votre main · Aucune Magouille</p>
+    <div class="fan" id="fan"><div class="vide" aria-hidden="true"></div></div>
+    <p class="legende" id="main-legende">Mauvaise réponse : vous piochez une Magouille. Votre vengeance commence.</p>
+  </aside>
+
+  <!-- Vos sondages : +10 par bonne réponse, grand oral à 50 -->
+  <aside class="sondages in" style="--d:600ms" aria-label="Vos sondages">
+    <p class="kick">Vos sondages</p>
+    <p class="pct"><span id="pct">0</span> %</p>
+    <div class="piste" id="piste" aria-hidden="true">
+      <span class="pt on" data-v="0"></span><span class="pt" data-v="10"></span><span class="pt" data-v="20"></span><span class="pt" data-v="30"></span><span class="pt" data-v="40"></span><span class="pt oral" data-v="50"></span>
+    </div>
+    <p class="legende">À 50 %, on noue la cravate : le grand oral, pour se faire élire.</p>
+  </aside>
+
+  <a class="cue kick in" style="--d:700ms" href="#editeurs">Éditeurs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9l8 8 8-8"/></svg></a>
+</section>
+
+<!-- ÉCRAN 2 · ÉDITEURS -->
+<section class="edit papier" id="editeurs">
+  <div class="col">
+    <div class="g">
+      <span class="chip">Éditeurs</span>
+      <h2>Vous éditez des jeux ?</h2>
+      <p class="lede">Le prototype est complet et joué. 100 Casseroles, 25 Éditions spéciales, 50 Magouilles, le plateau : le tout part par la poste. La règle complète et le Registre des scellés, qui prouve chaque fait, sont à vous. Un mail suffit.</p>
+      <div class="actions">
+        <a class="btn plein" href="mailto:contact@lesyeuxdanslesyeux.info?subject=Proposition%20de%20jeu%20%C2%B7%20Les%20yeux%20dans%20les%20yeux">Écrire à l'auteur</a>
+        <a class="btn" href="editeurs.html">Le dossier éditeur</a>
+      </div>
+      <p class="mail">contact@lesyeuxdanslesyeux.info<br>Prototype aux Nuits du Off, Festival International des Jeux de Cannes, 23 au 27 février 2027</p>
+    </div>
+    <div class="raisons">
+      <div class="r"><span class="k kick">Promesse 1 · Affaire jugée</span><h3>Aucune carte sans source.</h3><p>Du jugé et du déclaré public, rien d'autre. Chaque Casserole a sa page au Registre des scellés, livré dans la boîte. Rien à plaider.</p></div>
+      <div class="r"><span class="k kick">Promesse 2 · Affaire de principe</span><h3>Tout le monde y passe.</h3><p>La carte dit le fait, la table décide du reste. De 1958 à 2026, gauche, droite, centre : chacun a participé à l'effort national. Chaque partie fâche quelqu'un. Jamais le même.</p></div>
+      <div class="r"><span class="k kick">Promesse 3 · Affaire à suivre</span><h3>Les élus écrivent la suite.</h3><p>100 Casseroles imprimées, 200 en boîte. Le reste attend son millésime. Nos fournisseurs travaillent sans relâche et ne réclament aucun droit d'auteur.</p></div>
+    </div>
+  </div>
+
+  <div class="col auteur">
+    <div><span class="kick">Un jeu de</span><h2 class="nom">Quentin Grimal</h2></div>
+    <div>
+      <p>Quentin Grimal est publicitaire. Il a longtemps cru que son métier consistait à embellir la réalité. Puis il a lu des comptes rendus d'audience, des rapports de la Cour des comptes et des archives de l'INA, et découvert des professionnels bien plus doués que lui. Payés sur fonds publics.</p>
+      <p>Les yeux dans les yeux est son premier jeu. Il a été écrit pour une table de huit où quelqu'un finit toujours par dire « je ne veux pas lancer de débat, mais… ». Une règle simple : on ne rit que de ce qui est arrivé. Les intéressés démentent. Ils ont l'habitude.</p>
+    </div>
   </div>
 </section>
 
-<section>
-  <div class="art"><span class="no">Comment on joue</span><h2>Un tour en quatre temps</h2></div>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><div class="d"><b>Le Porte-parole lit la Casserole</b> à voix haute. Un fait politique français, authentique ou déformé. Il change à chaque carte.</div></div>
-    <div class="step"><div class="n">2</div><div class="d"><b>« Trois, deux, un, les yeux dans les yeux. »</b> Chacun pose son bulletin <span class="pill ok">Info</span> ou <span class="pill ko">Intox</span> face cachée, puis on retourne.</div></div>
-    <div class="step"><div class="n">3</div><div class="d"><b>Verdict et chute.</b> Bonne réponse : <b class="r">+10 %</b> sur le plateau. Mauvaise réponse : tu pioches une Magouille. Ta vengeance commence.</div></div>
-    <div class="step"><div class="n">4</div><div class="d"><b>Phase Magouilles.</b> Attaques à ton tour de parole, parades en réaction. À <b class="r">50 %</b>, le favori noue la cravate et passe son <b>grand oral</b> : trois casseroles, deux bonnes réponses, élu.</div></div>
-  </div>
-</section>
+<footer class="nuit">
+  <span>Un jeu de Quentin Grimal · <a href="mailto:contact@lesyeuxdanslesyeux.info">contact@lesyeuxdanslesyeux.info</a></span>
+  <span>Prototype 2026 · Dépôt e-Soleau INPI · Toute ressemblance avec des faits réels est volontaire, et cotée au Registre des scellés</span>
+</footer>
 
-<section>
-  <div class="art"><span class="no">Pourquoi</span><h2>Trois raisons d'y croire</h2></div>
-  <div class="compo"><div class="t">Tout est vrai, et ça se prouve <span class="s">Le premier jeu d'archives</span></div><div class="d">Que du jugé et du déclaré public, chaque carte cotée au Registre des scellés. Le cadre juridique est bordé : c'est l'ADN du jeu, pas un risque. Le comique vient du réel, et le réel bat la fiction à chaque carte.</div></div>
-  <div class="compo"><div class="t">Tous les bords, toute la Ve <span class="s">Constat, pas verdict</span></div><div class="d">La carte dit le fait, jamais ce qu'il faut en penser. Même sévérité de 1958 à 2026. Personne à table n'est neutre : c'est le seul sujet qui met tout le monde d'accord pour se disputer.</div></div>
-  <div class="compo"><div class="t">Un gisement renouvelable <span class="s">Extensions naturelles</span></div><div class="d">Le personnel politique tourne, le corpus aussi : socle intemporel + millésimes (« le millésime 2027 »). Plus de 2 700 faits identifiés pour 200 cartes en boîte. Un jeu à extensions, pas un one-shot.</div></div>
-  <div class="materiel">
-    <div class="t">Le matériel du prototype</div>
-    <div class="d"><b>100 Casseroles</b> (50 Info · 50 Intox, 200 visées en boîte) · <b>50 Magouilles</b> en 12 types (Attaques et Parades) · <b>25 Éditions spéciales</b> · bulletins Info / Intox · plateau de 0 à 50 % · la cravate du favori · règle en 1 page + règle complète 4 p. · <b>Registre des scellés</b>, 33 p. : la source de chaque carte, citée au dos.</div>
-  </div>
-</section>
-
-<section>
-  <div class="art"><span class="no">Documents</span><h2>À télécharger</h2></div>
-  <div class="docs">
-    <a class="doc" href="SELL_SHEET_A4.pdf"><span class="t">Sell sheet</span><span class="s">PDF · A4 · 1 page · pitch, règle en 4 temps, cartes</span></a>
-    <a class="doc" href="FICHE_A5.pdf"><span class="t">Fiche éditeur</span><span class="s">PDF · A5 recto/verso · la fiche des Nuits du Off</span></a>
-  </div>
-  <div class="etat">
-    <p><span class="lab">État</span> Prototype V2.1 complet et joué (premier playtest septembre 2026). Règle complète, registre des sources et jeu de cartes disponibles sur demande, en PDF ou en boîte.</p>
-    <p><span class="lab">Titre</span> « Les yeux dans les yeux » est un titre de travail. Dépôt e-Soleau INPI du 3 septembre 2026.</p>
-    <p><span class="lab">Cannes 2027</span> Le prototype sera aux Nuits du Off du Festival International des Jeux, du 23 au 27 février 2027.</p>
-  </div>
-</section>
-
-<div class="noirbox">
-  <div><div class="t">Contact · Auteur</div><div class="d"><b>Quentin Grimal</b><br><a href="mailto:q.grimal@gmail.com">q.grimal@gmail.com</a></div></div>
-  <div class="r">Éditeurs, testeurs, curieux :<br>une partie se joue en trente minutes, un verre dans la main.</div>
-</div>
-
-<div class="baseline"><span>Les yeux dans les yeux · Prototype V2.1 · 2026</span><span>Toute ressemblance avec des faits réels est volontaire, et cotée au Registre des scellés</span></div>
-
+<script src="v2/cartes.js"></script>
+<script src="table.js"></script>
 </body>
 </html>

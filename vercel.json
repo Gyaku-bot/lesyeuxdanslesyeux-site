@@ -2,6 +2,36 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
   "headers": [
-    { "source": "/(.*)\\.(webp|png|pdf)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=604800" } ] }
+    {
+      "source": "/(.*)\\.(webp|png|pdf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/v3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/v3/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/v3/editeurs.html",
+      "destination": "/editeurs.html",
+      "permanent": true
+    },
+    {
+      "source": "/v3/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
   ]
 }
