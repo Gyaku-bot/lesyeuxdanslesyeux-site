@@ -50,7 +50,7 @@ body:not(.arrivee) .in{opacity:1;transform:none;}
 .hero-txt{position:relative;z-index:2;margin-left:auto;margin-top:clamp(56px,9vh,110px);width:min(640px,40vw);padding:0 var(--pad) 0 0;text-shadow:0 2px 24px rgba(8,18,34,.7);}
 .hero-txt .kick{opacity:.65;}
 .hero-txt h1{margin-top:.7em;font-weight:700;text-transform:uppercase;line-height:.96;font-size:clamp(40px,3.6vw,58px);}
-.hero-txt h1 .chute{display:block;margin-top:.22em;color:#e8776d;}
+.hero-txt h1 .chute{display:inline-block;margin-top:.14em;padding:.02em .18em .06em .14em;background:var(--rouge);color:#fff;line-height:1.02;}
 .hero-txt h1 br + *{white-space:nowrap;}
 .hero-txt .lede{margin-top:1.1em;font-size:clamp(16px,1.2vw,19px);font-weight:500;line-height:1.4;text-wrap:pretty;opacity:.9;}
 .hero-txt .lede b{font-weight:700;}
