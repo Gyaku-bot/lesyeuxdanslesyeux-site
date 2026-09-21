@@ -17,11 +17,15 @@
     <span class="kick">Dossier éditeur · Prototype 2026</span>
   </div>
   <div class="garde-corps">
-    <svg class="oeil" viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M8 38 Q60 -6 112 38 Q60 80 8 38 Z"/><circle cx="60" cy="38" r="15"/><circle cx="60" cy="38" r="5.5" fill="currentColor" stroke="none"/></svg>
-    <h1>Les yeux<br>dans les yeux</h1>
-    <div class="filet"></div>
-    <p class="promesse">Le jeu où tout est vrai, sauf ce qui est faux.<br>C'est bien tout le problème.</p>
-    <p class="bandeau">Affaires politiques françaises. Jugées, déclarées, sourcées.</p>
+    <div class="g-titre">
+      <svg class="oeil" viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M8 38 Q60 -6 112 38 Q60 80 8 38 Z"/><circle cx="60" cy="38" r="15"/><circle cx="60" cy="38" r="5.5" fill="currentColor" stroke="none"/></svg>
+      <h1>Les yeux<br>dans les yeux</h1>
+    </div>
+    <div class="g-promesse">
+      <div class="filet"></div>
+      <p class="promesse">Le jeu où tout est vrai, sauf ce qui est faux.<br>C'est bien tout le problème.</p>
+      <p class="bandeau">Affaires politiques françaises. Jugées, déclarées, sourcées.</p>
+    </div>
   </div>
   <div class="garde-bas">
     <span class="kick">Party game · 3 à 8 joueurs · 20 à 30 min · Dès 16 ans</span>
@@ -30,7 +34,7 @@
 </header>
 
 <!-- Le dossier : une fiche d'instruction, sections courtes -->
-<main class="dossier">
+<main class="table"><div class="dossier">
 
   <section class="bloc">
     <div class="tete"><span class="tampon">Le pitch</span></div>
@@ -72,11 +76,11 @@
   <section class="bloc">
     <div class="tete"><span class="tampon">Pièces</span></div>
     <div class="corps">
-      <div class="cartes">
-        <img src="../v2/assets/casserole_03_EF-04-02.webp" alt="Une Casserole, verdict Info : la nomination de Jérôme Cahuzac">
-        <img src="../v2/assets/reserve_01_DP-08-01.webp" alt="Une Casserole, verdict Intox : le dromadaire de Tombouctou">
-        <img src="../v2/assets/mag_kompromat.webp" alt="Magouille Kompromat, carte Attaque">
-        <img src="../v2/assets/es_64.webp" alt="Édition spéciale : le siège vide">
+      <div class="eventail" aria-label="Quatre cartes du prototype">
+        <figure class="c" style="--r:-7deg;--y:14px"><img src="../v2/assets/casserole_03_EF-04-02.webp" alt="Une Casserole, verdict Info : la nomination de Jérôme Cahuzac"></figure>
+        <figure class="c" style="--r:-2deg;--y:4px"><img src="../v2/assets/reserve_01_DP-08-01.webp" alt="Une Casserole, verdict Intox : le dromadaire de Tombouctou"></figure>
+        <figure class="c" style="--r:3deg;--y:6px"><img src="../v2/assets/mag_kompromat.webp" alt="Magouille Kompromat, carte Attaque"></figure>
+        <figure class="c" style="--r:8deg;--y:16px"><img src="../v2/assets/es_64.webp" alt="Édition spéciale : le siège vide"></figure>
       </div>
       <div class="demande">
         <div>
@@ -104,7 +108,7 @@
     </div>
   </section>
 
-</main>
+</div></main>
 
 <footer>
   <span>Un jeu de Quentin Grimal</span>
