@@ -135,6 +135,8 @@ body.resolu .sous .suite{opacity:1;pointer-events:auto;}
 /* vos sondages : en bas à droite, symétrique de la main */
 .sondages{position:absolute;right:var(--pad);bottom:clamp(14px,2vh,22px);text-align:right;width:calc(var(--cw)*.8);transition:opacity .5s;}
 body.fin .sondages{opacity:0;pointer-events:none;}
+body.fin .main-joueur{opacity:.55;}
+body.fin .main-joueur:hover{opacity:1;}
 .sondages .kick{opacity:.6;margin-bottom:.2em;}
 .sondages .pct{font-family:var(--black);font-size:clamp(40px,4.2vw,64px);line-height:1;letter-spacing:.01em;}
 .sondages .pct span{display:inline-block;min-width:1.2em;text-align:right;transition:transform .25s var(--ease);}
@@ -160,16 +162,16 @@ body.fin .sondages{opacity:0;pointer-events:none;}
 @keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* le bilan : à la place du jeu */
-.bilan{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:min(1040px,76vw);margin:0 auto;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .9s ease .35s,transform .9s var(--ease) .35s;}
+.bilan{position:relative;z-index:6;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:min(1040px,76vw);margin:0 auto;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .9s ease .35s,transform .9s var(--ease) .35s;}
 body:not(.fin) .bilan{position:absolute;inset:0;}
 body.fin .bilan{opacity:1;transform:none;pointer-events:auto;}
 .bilan .promesse{font-weight:700;text-transform:uppercase;line-height:.94;font-size:clamp(44px,6.4vw,100px);text-wrap:balance;}
 .bilan .promesse .faux{color:#e8776d;}
 .bilan .promesse .pb{display:block;margin-top:.35em;font-size:.4em;line-height:1.05;font-weight:600;text-transform:none;letter-spacing:0;opacity:.95;}
-.bilan .phrase{margin:clamp(14px,2.4vh,28px) auto 0;font-size:clamp(19px,1.6vw,26px);font-weight:600;max-width:36em;text-wrap:pretty;}
+.bilan .phrase{margin:clamp(14px,2.4vh,28px) auto 0;font-size:clamp(16px,1.2vw,20px);font-weight:600;max-width:30em;text-wrap:pretty;}
 .bilan .phrase span{display:block;}
 .bilan .phrase span + span{margin-top:.25em;font-weight:500;opacity:.9;}
-.bilan .reste{margin:.6em auto 0;font-size:clamp(15px,1.1vw,18px);opacity:.75;max-width:38em;text-wrap:balance;}
+.bilan .reste{margin:.7em auto 0;font-size:clamp(14px,1vw,16px);opacity:.7;max-width:30em;text-wrap:pretty;}
 .bilan .actions{display:flex;justify-content:center;gap:1em;margin-top:clamp(22px,4vh,44px);}
 
 /* vue de contrôle : ?vue=editeurs masque la table */
