@@ -166,7 +166,7 @@ function bilan(){
     0: `Cinq sur cinq. Vous lisez la presse judiciaire, ou vous y figurez.`,
     1: `Une erreur sur cinq. La réalité vous a eu une fois. Elle recommencera.`,
     2: `Deux erreurs sur cinq. Comme tout le monde.`,
-    3: `Trois erreurs sur cinq. Comme tout le monde, un verre plus tard.`,
+    3: `Trois erreurs sur cinq. Le réel a gagné, de peu.`,
     4: `Quatre erreurs sur cinq. Le réel dépasse votre imagination. Il dépasse celle de tout le monde.`,
     5: `Cinq erreurs sur cinq. Vous avez cru tout le faux et douté de tout le vrai. Bienvenue à table.`,
   };
