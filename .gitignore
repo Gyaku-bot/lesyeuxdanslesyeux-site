@@ -1,2 +1,4 @@
 .DS_Store
 _apercus/
+.vercel
+.env*.local
