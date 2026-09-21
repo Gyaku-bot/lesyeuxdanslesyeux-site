@@ -47,7 +47,7 @@ b{font-weight:700;} a{color:inherit;} img{display:block;max-width:100%;}
 .raisons .art{display:flex;flex-direction:column;align-items:flex-start;gap:.55em;margin-bottom:.9em;font-family:var(--mono);font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1;}
 .raisons .art .num{color:var(--rouge);font-size:.6rem;white-space:nowrap;}
 .raisons .art .nom{background:var(--rouge);color:#fff;font-size:.66rem;padding:.6em .8em .5em;border-radius:.2em;white-space:nowrap;}
-.raisons h3{font-weight:700;text-transform:uppercase;line-height:1.1;font-size:.86rem;letter-spacing:.01em;margin-bottom:.6em;white-space:nowrap;}
+.raisons h3{font-weight:700;text-transform:uppercase;line-height:1.1;font-size:1rem;letter-spacing:.01em;margin-bottom:.6em;white-space:nowrap;}
 .raisons p{font-size:.95rem;}
 .eventail{display:flex;justify-content:center;align-items:flex-end;padding:1.2em 0 1.6em;}
 .eventail .c{width:22%;margin:0 -2.2%;transform:rotate(var(--r)) translateY(var(--y));transform-origin:50% 100%;transition:transform .45s cubic-bezier(.22,.61,.36,1),z-index 0s;position:relative;cursor:zoom-in;}
