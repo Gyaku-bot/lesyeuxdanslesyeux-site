@@ -162,7 +162,7 @@ function bilan(){
   const score = etat.score, manque = 50 - score;
   $('final-pct').textContent = `${score} %`;
   const oral = score >= 50
-    ? `Vous êtes à 50 %. Vous nouez la cravate : le grand oral vous attend. Trois casseroles, deux bonnes réponses, élu.`
+    ? `Vous êtes à 50 %. Vous nouez la cravate : le grand oral, pour tenter de remporter la partie. Trois casseroles, deux bonnes réponses, élu.`
     : `Il vous manque ${manque} points pour être candidat au grand oral.`;
   $('phrase').textContent = `${oral} ${ph[fautes]}`;
   $('bilan').setAttribute('aria-hidden', 'false');
