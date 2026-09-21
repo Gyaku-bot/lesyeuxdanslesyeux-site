@@ -65,7 +65,7 @@ b{font-weight:700;} a{color:inherit;} img{display:block;max-width:100%;}
 .btn{display:inline-flex;align-items:center;padding:1em 1.4em .9em;background:var(--rouge);color:#fff;border-radius:.3em;text-decoration:none;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .2s,transform .2s;}
 .btn:hover{background:#8f2a23;transform:translateY(-2px);}
 .contact .qui{margin-bottom:.4em;}
-.grand-mail{font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(20px,2.2vw,32px);text-decoration:none;border-bottom:3px solid var(--rouge);}
+.grand-mail{font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(11px,1.1vw,16px);letter-spacing:.04em;text-decoration:none;border-bottom:2px solid var(--rouge);padding-bottom:.15em;}
 footer{background:#0a1428;color:var(--creme);padding:1.3em var(--pad);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5em 2em;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
 @media (max-width:900px){.bloc{grid-template-columns:1fr;gap:1em;} .raisons{grid-template-columns:1fr;} .eventail .c{width:34%;} .demande{grid-template-columns:1fr;} .garde-ligne{grid-template-columns:1fr;text-align:center;} .garde-ligne .mail{text-align:center;}}
 
