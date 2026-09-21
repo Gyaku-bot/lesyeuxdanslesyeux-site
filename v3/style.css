@@ -234,7 +234,7 @@ body.fin .bilan{opacity:1;transform:none;pointer-events:auto;}
 .bilan .actions{display:flex;justify-content:center;gap:1em;margin-top:clamp(22px,4vh,44px);}
 
 /* vue de contrôle : ?vue=editeurs masque la table */
-body.sans-table .table{display:none;}
+body.sans-table .table,body.sans-table .hero{display:none;}
 body.sans-hero .hero{display:none;}
 
 /* ---- écran 2 : éditeurs, auteur ---- */
