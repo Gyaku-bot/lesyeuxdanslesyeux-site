@@ -55,7 +55,13 @@ body:not(.arrivee) .in{opacity:1;transform:none;}
 .hero-txt .lede{margin-top:1.1em;font-size:clamp(16px,1.2vw,19px);font-weight:500;line-height:1.4;text-wrap:pretty;opacity:.9;}
 .hero-txt .lede b{font-weight:700;}
 .hero-txt .actions{display:flex;align-items:center;gap:1.6em;margin-top:1.8em;}
-.btn.grand{font-size:.85rem;padding:1.15em 2.2em 1.05em;letter-spacing:.2em;}
+.btn.grand{position:relative;font-size:.85rem;padding:1.15em 2.2em 1.05em;letter-spacing:.2em;box-shadow:0 0 0 0 rgba(168,51,43,.55);}
+/* TESTEZ : arrive comme un tampon (rebond court), puis respire par son ombre ; le survol le soulève */
+body:not(.arrivee) .btn.grand{animation:tampon .55s cubic-bezier(.2,1.3,.3,1) .9s both, pulse 2.8s ease-in-out 1.6s infinite;}
+@keyframes tampon{0%{opacity:0;transform:rotate(-6deg) scale(1.45)}70%{opacity:1;transform:rotate(-1deg) scale(.97)}100%{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(168,51,43,.55)}55%{box-shadow:0 0 0 12px rgba(168,51,43,0)}}
+.btn.grand:hover{animation:none;transform:translateY(-3px);box-shadow:0 14px 30px rgba(168,51,43,.45);}
+.btn.grand:active{transform:translateY(0) scale(.98);}
 .hero-txt .lien{opacity:.7;text-decoration:none;border-bottom:1px solid rgba(242,237,226,.4);padding-bottom:.2em;transition:opacity .25s;}
 .hero-txt .lien:hover{opacity:1;}
 .hero-cue{position:absolute;left:50%;bottom:clamp(14px,2vh,22px);transform:translateX(-50%);}
