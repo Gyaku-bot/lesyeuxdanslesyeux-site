@@ -157,7 +157,11 @@ body.resolu .bul.choisi{opacity:1;filter:none;box-shadow:0 0 0 2px var(--creme),
 .sous .consigne{font-size:1.02rem;font-weight:500;line-height:1.35;text-wrap:balance;opacity:.85;transition:opacity .35s;}
 .sous .verdict{font-size:1.08rem;font-weight:600;line-height:1.3;opacity:0;transform:translateY(5px);transition:opacity .5s ease .45s,transform .5s var(--ease) .45s;text-wrap:balance;}
 .sous .verdict .r{color:#e8776d;} .sous .verdict .v{color:#63c98e;}
-.sous .suite{display:inline-flex;align-items:center;gap:.6em;margin-top:1em;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.8em 1.2em .7em;border:1.5px solid rgba(242,237,226,.55);border-radius:.3em;opacity:0;pointer-events:none;transition:opacity .4s ease 1s,background .25s,color .25s;}
+.sous .suite{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.6em;margin-top:1em;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.8em 1.2em .7em;border:1.5px solid rgba(242,237,226,.55);border-radius:.3em;opacity:0;pointer-events:none;transition:opacity .4s ease 1s,background .25s,color .25s,border-color .25s,box-shadow .25s;}
+/* surbrillance : le filet s'éclaire et une lueur crème l'entoure, en rythme avec le chevron */
+body.resolu .sous .suite{animation:lueur 4s var(--ease) 1.4s infinite;}
+@keyframes lueur{0%,100%{border-color:rgba(242,237,226,.55);box-shadow:0 0 0 0 rgba(242,237,226,0)}8%{border-color:rgba(242,237,226,1);box-shadow:0 0 18px 2px rgba(242,237,226,.28)}24%{border-color:rgba(242,237,226,.55);box-shadow:0 0 0 0 rgba(242,237,226,0)}}
+.sous .suite:hover{animation:none;border-color:var(--creme);box-shadow:none;}
 .sous .suite svg{width:1.1em;height:1.1em;transition:transform .3s var(--ease);}
 /* le chevron avance et revient, doucement, toutes les 4 secondes ; il part au survol */
 body.resolu .sous .suite svg{animation:chevron 4s var(--ease) 1.4s infinite;}
