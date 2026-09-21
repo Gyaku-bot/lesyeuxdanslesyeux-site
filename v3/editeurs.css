@@ -31,7 +31,7 @@ b{font-weight:700;} a{color:inherit;} img{display:block;max-width:100%;}
 .bloc{display:grid;grid-template-columns:150px 1fr;gap:1.6em 2.6em;padding:clamp(26px,3.6vh,40px) 0;border-top:1px solid var(--filet);}
 .bloc:first-child{border-top:0;padding-top:0;}
 .tete{padding-top:.3em;}
-.tampon{display:inline-block;border:2px solid var(--rouge);color:var(--rouge);border-radius:.22em;padding:.35em .65em .25em;transform:rotate(-3deg);font-family:var(--black);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.15;max-width:140px;text-wrap:balance;}
+.tampon{display:inline-block;border:2px solid var(--rouge);color:var(--rouge);border-radius:.22em;padding:.35em .65em .25em;transform:rotate(-3deg);font-family:var(--black);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.15;max-width:140px;text-wrap:balance;text-align:center;}
 .corps h2{font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(24px,2.2vw,32px);margin-bottom:.75em;text-wrap:balance;}
 .corps p{max-width:40em;text-wrap:pretty;font-size:.98rem;line-height:1.5;}
 .corps p + p{margin-top:.8em;}
