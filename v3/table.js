@@ -54,7 +54,7 @@ function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
 function carteHTML(c, n){
   const mot = c.ko ? 'INTOX' : 'INFO';
-  const chute = c.chute.trim().startsWith('«') ? esc(c.chute) : `<q>«</q> ${esc(c.chute)} <q>»</q>`;
+  const chute = c.chute.trim().startsWith('«') ? esc(c.chute) : `<q>«</q>&nbsp;${esc(c.chute)}&nbsp;<q>»</q>`;
   return `<article class="carte" aria-label="Casserole ${n}">
     <div class="ck"><span>Casserole</span><span>Cote ${esc(c.cote)}</span></div>
     <div class="ville">${esc(c.ville)}</div>
@@ -72,10 +72,18 @@ function carteHTML(c, n){
 
 /* ---- une carte trop pleine se resserre, comme à l'impression ---- */
 function ajuster(carte){
-  const deborde = () => carte.scrollHeight > carte.clientHeight + 1;
+  carte.classList.remove('serre', 'serre2');
+  const pied = carte.querySelector('.pied');
+  /* offsetTop/offsetHeight : mise en page brute, insensible à la rotation 3D en cours */
+  const deborde = () => {
+    const marge = parseFloat(getComputedStyle(carte).paddingBottom) || 0;
+    return pied.offsetTop + pied.offsetHeight > carte.clientHeight - marge + 1;
+  };
   if (deborde()) carte.classList.add('serre');
   if (deborde()) carte.classList.add('serre2');
 }
+/* les polices web arrivent après le premier rendu : on remesure */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (etat.carte) ajuster(etat.carte); });
 
 /* ---- distribuer : la carte du dessus se retourne ---- */
 function distribuer(){
@@ -141,6 +149,7 @@ function poser(ditIntox){
   etat.reponses[etat.i] = juste;
   buls[ditIntox ? 1 : 0].classList.add('choisi');
   body.classList.add('resolu');
+  ajuster(etat.carte);
   etat.carte.classList.add(c.ko ? 'ko' : 'ok');
   const ditMot = ditIntox ? 'intox' : 'info', etaitMot = c.ko ? 'intox' : 'info';
   if (juste){
