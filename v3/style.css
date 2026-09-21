@@ -166,7 +166,9 @@ body.fin .bilan{opacity:1;transform:none;pointer-events:auto;}
 .bilan .promesse{font-weight:700;text-transform:uppercase;line-height:.94;font-size:clamp(44px,6.4vw,100px);text-wrap:balance;}
 .bilan .promesse .faux{color:#e8776d;}
 .bilan .promesse .pb{display:block;margin-top:.35em;font-size:.4em;line-height:1.05;font-weight:600;text-transform:none;letter-spacing:0;opacity:.95;}
-.bilan .phrase{margin:clamp(14px,2.4vh,28px) auto 0;font-size:clamp(19px,1.6vw,26px);font-weight:600;max-width:34em;text-wrap:balance;}
+.bilan .phrase{margin:clamp(14px,2.4vh,28px) auto 0;font-size:clamp(19px,1.6vw,26px);font-weight:600;max-width:36em;text-wrap:pretty;}
+.bilan .phrase span{display:block;}
+.bilan .phrase span + span{margin-top:.25em;font-weight:500;opacity:.9;}
 .bilan .reste{margin:.6em auto 0;font-size:clamp(15px,1.1vw,18px);opacity:.75;max-width:38em;text-wrap:balance;}
 .bilan .actions{display:flex;justify-content:center;gap:1em;margin-top:clamp(22px,4vh,44px);}
 

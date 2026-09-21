@@ -175,7 +175,7 @@ function bilan(){
   const oral = score >= 50
     ? `Vous êtes à 50 %. Vous nouez la cravate : le grand oral, pour tenter de remporter la partie. Trois casseroles, deux bonnes réponses, élu.`
     : `Il vous manque ${manque} points pour être candidat au grand oral.`;
-  $('phrase').textContent = `${oral} ${ph[fautes]}`;
+  $('phrase').innerHTML = `<span>${oral}</span><span>${ph[fautes]}</span>`;
   $('bilan').setAttribute('aria-hidden', 'false');
 }
 
@@ -202,4 +202,5 @@ if (params.has('etat')){
   if (params.get('etat') === 'fin'){ etat.reponses = [true, false, true, false, true]; etat.i = 4; etat.score = 30; afficherScore(30); piocher(); piocher(); bilan(); }
   if (params.get('etat') === 'erreur'){ poser(false); }
   if (params.get('etat') === 'main5'){ for (let k = 0; k < 5; k++) piocher(); }
+  if (params.get('etat') === 'fin5'){ etat.reponses = [false, false, false, false, false]; etat.i = 4; for (let k = 0; k < 5; k++) piocher(); bilan(); }
 }
